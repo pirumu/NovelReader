@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:background="@color/white"
+            app:contentScrim="@color/popular"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleTextAppearance="@style/TransparentText">
+
+
+            <RelativeLayout
+                android:id="@+id/activity_landing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <ImageView
+                    android:id="@+id/img_background"
+                    android:background="@color/primary_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_cover" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/img_background"
+                    android:layout_centerHorizontal="false"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="-60dp"
+                    android:src="@drawable/nothing"/>
+
+
+            </RelativeLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_dialog"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <RelativeLayout style="@style/profileDetailsLayout">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/nameImageView"
+                android:src="@drawable/username_pf"
+                style="@style/profileDetailsImage" />
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:text="Họ và Tên"
+                android:layout_toEndOf="@id/nameImageView"
+                style="@style/profileDetailsTextMain" />
+
+            <TextView
+                android:paddingTop="20dp"
+                android:text="developer"
+                android:layout_toEndOf="@id/nameImageView"
+                style="@style/profileDetailsMiniText" />
+
+        </RelativeLayout>
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/emailImageView"
+                android:src="@drawable/email_pf"
+                style="@style/profileDetailsImage" />
+
+            <TextView
+                android:text="Địa chỉ Email"
+                android:layout_toEndOf="@id/emailImageView"
+                style="@style/profileDetailsTextMain" />
+
+            <TextView
+                android:paddingTop="20dp"
+                android:text="developer@appsnipp.com"
+                android:layout_toEndOf="@id/emailImageView"
+                style="@style/profileDetailsMiniText" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/addressImageView"
+                android:src="@drawable/gender_pf"
+                style="@style/profileDetailsImage" />
+
+            <TextView
+                android:text="Giới tính"
+                android:layout_toEndOf="@id/addressImageView"
+                style="@style/profileDetailsTextMain" />
+
+            <TextView
+                android:paddingTop="20dp"
+                android:text="Avenue 2nd Street NW SY."
+                android:layout_toEndOf="@id/addressImageView"
+                style="@style/profileDetailsMiniText" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+        <RelativeLayout style="@style/profileDetailsLayout">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/dobImageView"
+                android:src="@drawable/birthday_pf"
+                style="@style/profileDetailsImage" />
+
+            <TextView
+                android:text="Sinh nhật"
+                android:layout_toEndOf="@id/dobImageView"
+                style="@style/profileDetailsTextMain" />
+
+            <TextView
+                android:paddingTop="20dp"
+                android:text="12-05-1990"
+                android:layout_toEndOf="@id/dobImageView"
+                style="@style/profileDetailsMiniText" />
+
+        </RelativeLayout>
+
+        <View style="@style/proifleDetailsView" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

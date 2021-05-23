@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root_layout"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@drawable/border_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:duplicateParentState="true"
+            android:focusable="false"
+            android:clickable="false"
+            android:id="@+id/chapter_name"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/tab_color"
+            android:textSize="15sp"
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Yêu em mãi mãi" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:duplicateParentState="true"
+            android:focusable="false"
+            android:clickable="false"
+            android:layout_height="match_parent">
+            <TextView
+                android:focusable="false"
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:id="@+id/created_at"
+                android:layout_width="wrap_content"
+                android:fontFamily="sans-serif"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#8A8383"
+                android:textSize="12sp"
+                android:gravity="start"
+                android:layout_marginTop="5dp"
+                android:text="28/02/2021" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="history">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="menu">#FF5722</color>
+    <color name="home">#4CAF50</color>
+    <color name="teal_700">#4CAF50</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="purple_550"> #4896f0</color>
+
+<!--    common-->
+    <color name="primary_color">#e55578</color>
+    <color name="second_color">#F695AD</color>
+    <color name="black_color">#000</color>
+    <color name="tab_color">#323131</color>
+    <color name="novel_tab_color">#464242</color>
+    <color name="app_background">#FFFFFF</color>
+    <color name="popular">#4896f0</color>
+
+
+<!--   add-->
+
+    <color name="colorPrimary">#1F5BF3</color>
+    <color name="colorPrimaryDark">#0947E8</color>
+    <color name="colorAccent">#00A5FF</color>
+
+    <!--colors for modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#00a5ff</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+</resources>

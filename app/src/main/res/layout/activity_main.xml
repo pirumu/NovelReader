@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_fragment_container_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp"
+        >
+
+    </androidx.fragment.app.FragmentContainerView>
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_navigation_background"
+        android:elevation="8dp"
+        app:cnb_iconSize="20dp"
+        app:itemIconTint="@drawable/bottom_navigation_color_selector"
+        app:cnb_menuResource="@menu/bottom_nav_menu" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingTop="25dp"
+        app:contentInsetStart="0dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/gender_choice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:paddingTop="4dp"
+                android:layout_weight="0.06"
+                android:src="@drawable/boy_ic"
+                android:tag="boy" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/app_tab"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:background="@android:color/transparent"
+                app:tabGravity="center"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@null"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabTextColor="@color/white"
+                android:layout_marginBottom="2dp"
+                app:tabIndicatorAnimationDuration="500"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabUnboundedRipple="false">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/suggest_txt"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explore_txt"
+                    android:textStyle="bold" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/find_now"
+                android:layout_width="0dp"
+                android:paddingTop="4dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="9dp"
+                android:layout_weight="0.05"
+                android:src="@drawable/search_white" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

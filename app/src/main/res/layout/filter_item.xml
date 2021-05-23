@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="top">
+
+    <androidx.cardview.widget.CardView
+        android:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:clickable="true"
+                android:id="@+id/tag_item_image"
+                android:src="@drawable/splash_logo"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:contentDescription="TODO" />
+            <TextView
+                android:textFontWeight="600"
+                android:id="@+id/tag_item_title"
+                android:textColor="#262626"
+                android:layout_below="@id/tag_item_image"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:text="Brochure"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@id/tag_item_title"
+                android:id="@+id/tag_item_desc"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
+                android:maxLines="3"
+                android:drawablePadding="10dp"
+                android:ellipsize="end"
+                android:text="Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

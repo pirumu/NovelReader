@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Tiểu Thuyết</string>
+    <string name="is_loading_txt">Đang tải...</string>
+    <string name="permissions_txt">Để sử dụng ứng dụng, bạn phải có các quyền sau đây!</string>
+    <string name="permissions_error_txt">Bạn đã từ chối cung cấp quyền</string>
+    <string name="email_txt">Email</string>
+    <string name="password_txt">Mật khẩu</string>
+    <string name="forgot_password_txt">Quên mật khẩu</string>
+    <string name="login_txt">Đăng Nhập</string>
+    <string name="register_now_txt">Chưa có tài khoản ? Đăng ký</string>
+    <string name="home_txt">Trang chủ</string>
+    <string name="favorite_txt">Yêu thích</string>
+    <string name="menu_txt">Menu</string>
+    <string name="history_txt">Lịch sử</string>
+    <string name="see_more_txt">Xem thêm >>></string>
+    <string name="me_txt">Tôi</string>
+    <string name="filter_txt">Phân loại</string>
+    <string name="new_novel_txt">Truyện Mới</string>
+    <string name="suggest_novel_txt">Có Thể Bạn Sẽ Thích</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mainff">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="suggest_txt">ĐỀ XUẤT</string>
+    <string name="tab_item_txt">ĐỀ XUẤT</string>
+    <string name="explore_txt">KHÁM PHÁ</string>
+    <string name="novel_detail_txt">Chi tiết</string>
+    <string name="chapter_txt">Chương</string>
+    <string name="new_txt">Mới nhất</string>
+    <string name="old_txt">Cũ nhất</string>
+    <string name="send_txt">Gửi</string>
+    <string name="vote_txt">Đánh giá:()</string>
+    <string name="repassword_txt">Nhập lại mật khẩu</string>
+    <string name="full_name_txt">Họ và Tên</string>
+    <string name="register_txt">Đăng ký</string>
+    <string name="bookmark_txt">Tủ Sách</string>
+    <string name="profile_txt">Thông Tin Cá Nhân</string>
+</resources>

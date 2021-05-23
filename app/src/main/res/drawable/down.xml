@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="15dp"
+    android:height="15dp"
+    android:viewportWidth="240.811"
+    android:viewportHeight="240.811">
+
+    <path
+        android:name="Expand_More"
+        android:fillColor="#323131"
+        android:pathData="M220.088,57.667 L120.417,157.362 L20.746,57.655
+C15.994,52.903,8.307,52.903,3.555,57.655
+C-1.185,62.407,-1.185,70.106,3.555,74.858 L111.816,183.155 L111.816,183.155
+L111.816,183.155 C116.556,187.907,124.255,187.907,128.995,183.155
+L237.256,74.859 C241.996,70.107,241.996,62.396,237.256,57.644
+C232.528,52.915,224.828,52.915,220.088,57.667 Z" />
+</vector>

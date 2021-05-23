@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent" >
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_group_comment"
+        android:background="@drawable/rounded_top_corners_background"
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_bottom"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="TODO"
+                android:src="@drawable/arrow"
+                android:tint="@android:color/black" />
+
+            <TextView
+                android:id="@+id/nameToolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+        <include
+            layout="@layout/comment_item_no_padding"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+
+
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout android:id="@+id/footer"
+        android:layout_height = "wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/structured_edittext_answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="left|top"
+            android:layout_gravity="center_vertical"
+            android:maxLines="5"
+            android:hint="Viết gì đó"
+            android:padding="10dp"
+            android:background="@drawable/rounded_corner_white"
+            android:textColorHint="@color/black"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:inputType="textMultiLine" />
+
+        <ImageView
+            android:clickable="true"
+            android:layout_weight="0.1"
+            android:id="@+id/structured_imagebutton_takePhoto"
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="24dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/send"
+            android:contentDescription="TODO" />
+    </LinearLayout>
+    <ScrollView
+        android:background="@drawable/border_top_5dp"
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height = "wrap_content"
+        android:fitsSystemWindows="true"
+        android:fillViewport="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_below="@id/layout_group_comment"
+        android:layout_above="@id/footer">
+        <LinearLayout
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--    <androidx.recyclerview.widget.RecyclerView-->
+            <!--        android:id="@+id/recyclerView"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="match_parent"-->
+            <!--        android:layout_below="@+id/layout_group_comment"-->
+            <!--        android:clipToPadding="false"-->
+            <!--        android:padding="8dp"-->
+            <!--        app:stackFromEnd="true"-->
+            <!--        >-->
+            <!--        -->
+            <!--    </androidx.recyclerview.widget.RecyclerView>-->
+            <include
+                android:id="@+id/x1"
+                layout="@layout/comment_item_no_padding"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/border_bottom"
+                />
+            <include
+                android:id="@+id/x3"
+                layout="@layout/comment_item_no_padding"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/border_bottom"
+                /><include
+            android:id="@+id/x4"
+            layout="@layout/comment_item_no_padding"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/border_bottom"
+            /><include
+            android:id="@+id/x5"
+            layout="@layout/comment_item_no_padding"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/border_bottom"
+            />
+            <include
+                android:id="@+id/x6"
+                layout="@layout/comment_item_no_padding"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@drawable/border_bottom"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

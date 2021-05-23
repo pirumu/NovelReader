@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.novel.NovelActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@drawable/girl"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+
+            >
+            <ImageView
+                android:id="@+id/novel_background_gradian"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/boy"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="225dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/novel_card_view"
+                    android:layout_width="110dp"
+                    android:layout_height="145dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp"
+
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/novel_background_image"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/girl"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/novel_title"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textFontWeight="600"
+                    app:layout_constraintVertical_bias="0.4"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    android:text="Thống Đốc Đại an"/>
+            </LinearLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/novel_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:title="Okie"
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="pin"
+                android:layout_marginTop="20dp"
+                />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:padding="12dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Loveing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_collapse_holo_light"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:padding="12dp"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="2020/09/18"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:padding="12dp"
+                    android:textSize="13sp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:layout_marginTop="12dp"
+                    android:text="
+      Thống Đốc quân Lục Nghị Phàm, kẻ đứng đầu và thâu tóm toàn bộ lực lượng quân đội liên quốc gia từ hơn năm mươi nước khác nhau, trên một vạn người, nhưng lại ở dưới một người. Người đó chính là Cửu Châu, vợ yêu của anh."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/novel_tab"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/border_bottom"
+        app:layout_anchor="@id/app_bar_layout"
+        app:layout_anchorGravity="bottom"
+        android:layout_gravity="bottom"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabIndicatorAnimationDuration="400"
+        app:tabIndicatorColor="#4896f0"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="@color/black"
+        app:tabUnboundedRipple="false">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/novel_detail_txt" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chapter_txt" />
+    </com.google.android.material.tabs.TabLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
