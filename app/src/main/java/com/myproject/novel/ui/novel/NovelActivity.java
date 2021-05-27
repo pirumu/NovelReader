@@ -1,15 +1,5 @@
 package com.myproject.novel.ui.novel;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -21,6 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
@@ -30,7 +26,6 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.myproject.novel.R;
-import com.myproject.novel.local.util.CommonUtils;
 import com.myproject.novel.local.util.GlideApp;
 
 import org.jetbrains.annotations.NotNull;
@@ -43,24 +38,20 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 public class NovelActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
-    private int postionActiveTab = 0;
     private Boolean buttonActive = true;
     private ImageView novelBackgroundGradian;
-    private  AppCompatImageView novelBackgroundImage;
+    private AppCompatImageView novelBackgroundImage;
     private CollapsingToolbarLayout collapsingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novel);
         novelBackgroundGradian = (ImageView) findViewById(R.id.novel_background_gradian);
-        novelBackgroundImage = (AppCompatImageView)findViewById(R.id.novel_background_image);
+        novelBackgroundImage = (AppCompatImageView) findViewById(R.id.novel_background_image);
         collapsingToolbar = findViewById(R.id.collapsing_toolbar);
-        CommonUtils.setFullScreenWithStatusBar(this,true);
         loadTab();
-        setBackgroundDefault("http://cn.e.pic.mangatoon.mobi/cartoon-posters/285906e402.jpg");
-
+        setBackgroundDefault("http://cn.e.pic.mangatoon.mobi/cartoon-posters/637534a96c.jpg");
         Toolbar toolbar = (Toolbar) findViewById(R.id.novel_toolbar);
         toolbar.setTitle("");
         toolbar.setNavigationIcon(R.drawable.arrow);
@@ -72,7 +63,7 @@ public class NovelActivity extends AppCompatActivity {
         viewPager.setAdapter(new NovelAdapter(this));
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
-                    if(position == 0 ){
+                    if (position == 0) {
                         tab.setCustomView(setUpCustomTab(R.string.novel_detail_txt));
                     } else {
                         tab.setCustomView(setUpCustomTab(R.string.chapter_txt));
@@ -81,9 +72,7 @@ public class NovelActivity extends AppCompatActivity {
         ).attach();
 
 
-
     }
-
 
 
     @Override
@@ -102,18 +91,19 @@ public class NovelActivity extends AppCompatActivity {
 
         GlideApp.with(getApplicationContext()).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).transition(
                 DrawableTransitionOptions.withCrossFade())
-                .apply(new RequestOptions().transform(new BlurTransformation(50)))
+                .apply(new RequestOptions().transform(new BlurTransformation(60)))
                 .into(novelBackgroundGradian);
 
         GlideApp.with(this).asBitmap().load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.mipmap.ic_launcher)
-                .apply(new RequestOptions().transform(new BlurTransformation(50)))
+                .apply(new RequestOptions().transform(new BlurTransformation(60)))
                 .into(new CustomTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NotNull Bitmap bitmap, Transition<? super Bitmap> transition) {
-                            collapsingToolbar.setContentScrim(new BitmapDrawable(bitmap));
+                        collapsingToolbar.setContentScrim(new BitmapDrawable(bitmap));
                     }
+
                     @Override
                     public void onLoadCleared(Drawable placeholder) {
                     }
@@ -122,14 +112,13 @@ public class NovelActivity extends AppCompatActivity {
     }
 
     private void loadTab() {
-        tabLayout  = findViewById(R.id.novel_tab);
+        tabLayout = findViewById(R.id.novel_tab);
         tabLayout.removeAllTabs();
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                postionActiveTab = tab.getPosition();
                 TextView tabActive = (TextView) tab.getCustomView();
-                if(tabActive != null) {
+                if (tabActive != null) {
                     tabActive.setTextSize(14);
                     tabActive.setTextColor(Color.parseColor("#4896f0"));
                 }
@@ -138,14 +127,15 @@ public class NovelActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 TextView tabActive = (TextView) tab.getCustomView();
-                if(tabActive != null) {
+                if (tabActive != null) {
                     tabActive.setTextSize(14);
                     tabActive.setTextColor(getResources().getColor(R.color.novel_tab_color));
                 }
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) { }
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
         });
     }
 
@@ -160,21 +150,19 @@ public class NovelActivity extends AppCompatActivity {
         return customTab;
 
 
-
-
     }
 
     public void changBg(View view) {
-        AppCompatButton  acButton = findViewById(R.id.favorite_now_btn);
+        AppCompatButton acButton = findViewById(R.id.favorite_now_btn);
 
-        if(buttonActive) {
+        if (buttonActive) {
             buttonActive = false;
             acButton.setText("Bỏ Thích");
-            acButton.setCompoundDrawablesWithIntrinsicBounds(null,getDrawable(R.drawable.heartcheck),null,null);
+            acButton.setCompoundDrawablesWithIntrinsicBounds(null, getDrawable(R.drawable.heartcheck), null, null);
         } else {
             buttonActive = true;
             acButton.setText("Yêu Thích");
-            acButton.setCompoundDrawablesWithIntrinsicBounds(null,getDrawable(R.drawable.heartplus),null,null);
+            acButton.setCompoundDrawablesWithIntrinsicBounds(null, getDrawable(R.drawable.heartplus), null, null);
         }
     }
 
@@ -193,4 +181,22 @@ public class NovelActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        hideSystemUI();
+    }
+
+    private void hideSystemUI() {
+
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                         View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    }
+
 }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.myproject.novel.CallbackMainActivity;
 import com.myproject.novel.R;
+import com.myproject.novel.ui.auth.AuthActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +45,15 @@ public class UserFragment extends Fragment {
 
     @Override
     public void onAttach(@NotNull Context context) {
+        boolean isAuth = false;
         super.onAttach(context);
         if (context instanceof CallbackMainActivity) {
             mCallback = (CallbackMainActivity) context;
+
+
+            if(!isAuth) {
+                mCallback.startActivity(AuthActivity.class,null);
+            }
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement CallbackMainActivity");

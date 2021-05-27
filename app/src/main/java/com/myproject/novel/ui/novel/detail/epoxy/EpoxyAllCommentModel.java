@@ -1,6 +1,8 @@
 package com.myproject.novel.ui.novel.detail.epoxy;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,16 +38,21 @@ public abstract  class EpoxyAllCommentModel extends EpoxyModelWithHolder<EpoxyAl
     public void bind(@NonNull EpoxyAllCommentHolder holder) {
         super.bind(holder);
         holder.totalComment.setText(String.format("Tất cả bình luận(%s)", totalComment));
-        holder.totalComment.setOnClickListener(clickListener);
+        holder.linearLayout.setOnClickListener(clickListener);
 
     }
 
     static class EpoxyAllCommentHolder extends EpoxyHolder {
 
         public TextView totalComment;
+        public LinearLayout linearLayout;
+
+
         @Override
         protected void bindView(@NonNull View itemView) {
             totalComment = itemView.findViewById(R.id.total_comment);
+            linearLayout = itemView.findViewById(R.id.all_comment_root_layout);
+
 
         }
 

@@ -1,24 +1,11 @@
 package com.myproject.novel.ui.home.epoxy;
 
-import android.os.Handler;
-import android.view.Gravity;
-import android.view.View;
-
-import com.airbnb.epoxy.BoundViewHolders;
 import com.airbnb.epoxy.Carousel;
 import com.airbnb.epoxy.CarouselModel_;
 import com.airbnb.epoxy.EpoxyModel;
-import com.airbnb.epoxy.EpoxyViewHolder;
-import com.airbnb.epoxy.OnModelBoundListener;
 import com.airbnb.epoxy.TypedEpoxyController;
-import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
-import com.myproject.novel.local.util.CarouselIndicatorModel;
-import com.myproject.novel.local.util.CustomSnappingCarousel;
-import com.myproject.novel.local.util.CustomSnappingCarouselModel_;
-import com.myproject.novel.local.util.ICallback;
 import com.myproject.novel.model.NovelModel;
 import com.myproject.novel.model.SwipeModel;
-import com.myproject.novel.ui.home.epoxy.EpoxyNovelModel;
 
 import java.util.ArrayList;
 import java.util.List;

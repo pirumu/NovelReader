@@ -1,6 +1,7 @@
 package com.myproject.novel.ui.novel.detail.epoxy;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,7 @@ public abstract class EpoxyCommentModel  extends EpoxyModelWithHolder<EpoxyComme
         holder.username.setText(userModel.username);
         holder.content.setText(commentModel.content);
         holder.createdAt.setText(commentModel.createdAt);
+            holder.likeComment.setOnClickListener(v -> holder.likeComment.setImageResource(R.drawable.liked));
 
     }
 
@@ -59,12 +61,15 @@ public abstract class EpoxyCommentModel  extends EpoxyModelWithHolder<EpoxyComme
 
         public CircleImageView userAvatar;
         public TextView username,createdAt,content;
+        public ImageView likeComment;
+
         @Override
         protected void bindView(@NonNull View itemView) {
             userAvatar = itemView.findViewById(R.id.user_avatar);
             username = (TextView)itemView.findViewById(R.id.username);
             createdAt = (TextView)itemView.findViewById(R.id.created_at);
             content = (TextView)itemView.findViewById(R.id.content);
+            likeComment = (ImageView)itemView.findViewById(R.id.like_comment);
         }
 
     }

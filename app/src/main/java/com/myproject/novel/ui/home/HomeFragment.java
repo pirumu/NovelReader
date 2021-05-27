@@ -68,6 +68,8 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.home_fragment, container, false);
+
+        CommonUtils.setFullScreenWithStatusBar(requireActivity(), true);
         bg = rootView.findViewById(R.id.default_bg);
         nestedScrollView = rootView.findViewById(R.id.home_nested_scroll);
         nestedScrollView.fullScroll(NestedScrollView.FOCUS_UP);
@@ -80,22 +82,10 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        CommonUtils.setFullScreenWithStatusBar(requireActivity(), false);
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         homeController.setData(dumpData());
-
         mCallback.changeToolbarBackgroundColor("#FFFFFF", "#00000000", 325);
-//        if(isLightStatusBar) {
-//            isLightStatusBar = false;
-//            CommonUtils.clearLightStatusBar(requireActivity());
-//
-//        } else {
-//            isLightStatusBar = true;
-//            CommonUtils.enableLightStatusBar(requireActivity());
-//        }
         mCallback.changeTabLayoutColor("#FFFFFF", "#FFFFFF");
-
-
     }
 
     private void setController(Context ctx) {
@@ -103,8 +93,6 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
             homeController = new HomeController(this);
             homeController.setDebugLoggingEnabled(true);
             RecyclerView homeRecyclerView = rootView.findViewById(R.id.recyclerView);
-
-
             int spanCount = 3;
             GridLayoutManager layoutManager = new GridLayoutManager(ctx, spanCount);
             homeController.setSpanCount(spanCount);

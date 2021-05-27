@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.myproject.novel.local.util.CommonUtils;
 import com.myproject.novel.ui.favorite.FavoriteFragment;
 import com.myproject.novel.ui.filter.FilterFragment;
 import com.myproject.novel.ui.home.HomeFragment;
@@ -123,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements CallbackMainActiv
                 tabActive.setTextSize(15);
 
                 if(((TextView) tab.getCustomView()).getText() == getString(R.string.suggest_txt)) {
-
                     loadFragment(homeFragment);
                 } else {
 //                    loadFragment(new SearchFragment());
@@ -207,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements CallbackMainActiv
     public void destroyTabLayout() {
         tabLayout.removeAllViews();
     }
+
 }
 
 

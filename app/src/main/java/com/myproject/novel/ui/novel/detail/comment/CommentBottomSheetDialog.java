@@ -1,31 +1,17 @@
 package com.myproject.novel.ui.novel.detail.comment;
 
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,10 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.myproject.novel.R;
 import com.myproject.novel.local.util.CommonUtils;
-import com.myproject.novel.local.util.HeightProvider;
 
-
-import org.jetbrains.annotations.NotNull;
 
 import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
 

@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import at.blogc.android.views.ExpandableTextView;
 import com.myproject.novel.R;
+import com.myproject.novel.local.util.CommonUtils;
 import com.myproject.novel.model.CommentModel;
 import com.myproject.novel.model.NovelModel;
 import com.myproject.novel.ui.novel.detail.comment.CommentBottomSheetDialog;
@@ -53,6 +54,8 @@ public class DetailFragment extends Fragment implements SuggestController.EpoxyA
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.detail_fragment, container, false);
+       CommonUtils.setFullScreenWithStatusBar(requireActivity(),true);
+
         novelRate = rootView.findViewById(R.id.novel_rate);
         novelRate.setRating(5f);
         Context ctx = requireContext();
@@ -232,11 +235,10 @@ public class DetailFragment extends Fragment implements SuggestController.EpoxyA
     }
     @Override
     public void commentClick(CommentModel model) {
-
-        Toast.makeText(getContext(), "Hello toast!", Toast.LENGTH_SHORT).show();
-
         CommentBottomSheetDialog commentBottomSheetDialog = new CommentBottomSheetDialog();
         commentBottomSheetDialog.show(getParentFragmentManager(),"ModalCommentBottomSheet");
 
     }
+
+
 }
