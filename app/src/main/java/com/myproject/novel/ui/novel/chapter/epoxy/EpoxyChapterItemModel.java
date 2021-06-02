@@ -1,12 +1,10 @@
 package com.myproject.novel.ui.novel.chapter.epoxy;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyHolder;
@@ -25,8 +23,8 @@ public abstract class EpoxyChapterItemModel extends EpoxyModelWithHolder<EpoxyCh
     @EpoxyAttribute
     public View.OnClickListener clickListener;
 
-    public EpoxyChapterItemModel(String chapterName,String createAt, View.OnClickListener clickListener) {
-        this.chapterName= String.format("%s %s",chapterName,defaultText);
+    public EpoxyChapterItemModel(String chapterName, String createAt, View.OnClickListener clickListener) {
+        this.chapterName = String.format("%s %s", chapterName, defaultText);
         this.createAt = createAt;
         this.clickListener = clickListener;
     }
@@ -34,7 +32,7 @@ public abstract class EpoxyChapterItemModel extends EpoxyModelWithHolder<EpoxyCh
 
     @Override
     protected int getDefaultLayout() {
-        return  R.layout.chapter_item;
+        return R.layout.chapter_item;
     }
 
     @Override
@@ -42,18 +40,19 @@ public abstract class EpoxyChapterItemModel extends EpoxyModelWithHolder<EpoxyCh
         super.bind(holder);
         holder.chapterName.setText(chapterName);
         holder.createdAt.setText(createAt);
-//        holder.chapterName.setOnClickListener(clickListener);
-//        holder.createdAt.setOnClickListener(clickListener);
+        holder.wrapChapter.setOnClickListener(clickListener);
     }
 
     static class HeaderItemHolder extends EpoxyHolder {
 
-        public TextView chapterName,createdAt;
+        public TextView chapterName, createdAt;
+        public LinearLayout wrapChapter;
 
         @Override
         protected void bindView(@NonNull View itemView) {
             chapterName = itemView.findViewById(R.id.chapter_name);
             createdAt = itemView.findViewById(R.id.created_at);
+            wrapChapter = itemView.findViewById(R.id.root_layout);
         }
 
 

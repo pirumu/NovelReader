@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -32,8 +30,8 @@
             <RelativeLayout
                 android:id="@+id/activity_landing"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/img_background"
                     android:background="@color/primary_color"
@@ -49,10 +47,11 @@
                     android:layout_centerHorizontal="false"
                     android:layout_marginStart="20sp"
                     android:layout_marginTop="-60dp"
-                    android:src="@drawable/nothing"/>
+                    android:src="@drawable/nothing" />
 
 
             </RelativeLayout>
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -62,109 +61,118 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/rounded_dialog"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/nameImageView"
-                android:src="@drawable/username_pf"
-                style="@style/profileDetailsImage" />
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_dialog"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <TextView
-                android:id="@+id/nameTextView"
-                android:text="Họ và Tên"
-                android:layout_toEndOf="@id/nameImageView"
-                style="@style/profileDetailsTextMain" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
-            <TextView
-                android:paddingTop="20dp"
-                android:text="developer"
-                android:layout_toEndOf="@id/nameImageView"
-                style="@style/profileDetailsMiniText" />
+            <RelativeLayout style="@style/profileDetailsLayout">
 
-        </RelativeLayout>
-        <View style="@style/proifleDetailsView" />
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/emailImageView"
-                android:src="@drawable/email_pf"
-                style="@style/profileDetailsImage" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/nameImageView"
+                    android:src="@drawable/username_pf"
+                    style="@style/profileDetailsImage" />
 
-            <TextView
-                android:text="Địa chỉ Email"
-                android:layout_toEndOf="@id/emailImageView"
-                style="@style/profileDetailsTextMain" />
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:text="Họ và Tên"
+                    android:layout_toEndOf="@id/nameImageView"
+                    style="@style/profileDetailsTextMain" />
 
-            <TextView
-                android:paddingTop="20dp"
-                android:text="developer@appsnipp.com"
-                android:layout_toEndOf="@id/emailImageView"
-                style="@style/profileDetailsMiniText" />
+                <TextView
+                    android:paddingTop="20dp"
+                    android:text="developer"
+                    android:layout_toEndOf="@id/nameImageView"
+                    style="@style/profileDetailsMiniText" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <View style="@style/proifleDetailsView" />
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/addressImageView"
-                android:src="@drawable/gender_pf"
-                style="@style/profileDetailsImage" />
+            <View style="@style/proifleDetailsView" />
 
-            <TextView
-                android:text="Giới tính"
-                android:layout_toEndOf="@id/addressImageView"
-                style="@style/profileDetailsTextMain" />
+            <RelativeLayout style="@style/profileDetailsLayout">
 
-            <TextView
-                android:paddingTop="20dp"
-                android:text="Avenue 2nd Street NW SY."
-                android:layout_toEndOf="@id/addressImageView"
-                style="@style/profileDetailsMiniText" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/emailImageView"
+                    android:src="@drawable/email_pf"
+                    style="@style/profileDetailsImage" />
 
-        </RelativeLayout>
+                <TextView
+                    android:text="Địa chỉ Email"
+                    android:layout_toEndOf="@id/emailImageView"
+                    style="@style/profileDetailsTextMain" />
 
-        <View style="@style/proifleDetailsView" />
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/dobImageView"
-                android:src="@drawable/birthday_pf"
-                style="@style/profileDetailsImage" />
+                <TextView
+                    android:paddingTop="20dp"
+                    android:text="developer@appsnipp.com"
+                    android:layout_toEndOf="@id/emailImageView"
+                    style="@style/profileDetailsMiniText" />
 
-            <TextView
-                android:text="Sinh nhật"
-                android:layout_toEndOf="@id/dobImageView"
-                style="@style/profileDetailsTextMain" />
+            </RelativeLayout>
 
-            <TextView
-                android:paddingTop="20dp"
-                android:text="12-05-1990"
-                android:layout_toEndOf="@id/dobImageView"
-                style="@style/profileDetailsMiniText" />
+            <View style="@style/proifleDetailsView" />
 
-        </RelativeLayout>
+            <RelativeLayout style="@style/profileDetailsLayout">
 
-        <View style="@style/proifleDetailsView" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/addressImageView"
+                    android:src="@drawable/gender_pf"
+                    style="@style/profileDetailsImage" />
 
-    </LinearLayout>
+                <TextView
+                    android:text="Giới tính"
+                    android:layout_toEndOf="@id/addressImageView"
+                    style="@style/profileDetailsTextMain" />
 
-</androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:paddingTop="20dp"
+                    android:text="Avenue 2nd Street NW SY."
+                    android:layout_toEndOf="@id/addressImageView"
+                    style="@style/profileDetailsMiniText" />
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+
+            <RelativeLayout style="@style/profileDetailsLayout">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/dobImageView"
+                    android:src="@drawable/birthday_pf"
+                    style="@style/profileDetailsImage" />
+
+                <TextView
+                    android:text="Sinh nhật"
+                    android:layout_toEndOf="@id/dobImageView"
+                    style="@style/profileDetailsTextMain" />
+
+                <TextView
+                    android:paddingTop="20dp"
+                    android:text="12-05-1990"
+                    android:layout_toEndOf="@id/dobImageView"
+                    style="@style/profileDetailsMiniText" />
+
+            </RelativeLayout>
+
+            <View style="@style/proifleDetailsView" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/suggest_item"
+    android:singleLine="true"
+    android:textColor="@color/tab_color"
+    android:padding="10dp"
+    android:stateListAnimator="@null"
+    android:textSize="14sp"
+    android:gravity="start|center_vertical"
+    android:background="@color/transparent"
+    android:elevation="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:ellipsize="marquee" />

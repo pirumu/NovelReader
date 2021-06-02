@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.novel.detail.DetailFragment"
     android:orientation="horizontal">
+
     <LinearLayout
         android:id="@+id/novel_rate_wrapper"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:orientation="horizontal"
         android:gravity="end"
         tools:ignore="UselessParent">
+
         <per.wsj.library.AndRatingBar
             android:id="@+id/novel_rate"
             android:layout_width="wrap_content"
@@ -21,23 +23,25 @@
             android:layout_height="18dp"
             app:starColor="#ffc107"
             android:layout_marginEnd="5dp"
-            android:isIndicator="true"
-           />
+            android:isIndicator="true" />
+
         <TextView
+            android:id="@+id/novel_rate_text"
             android:layout_marginEnd="5dp"
             android:layout_gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:text="2.5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/edit_vote"
             android:layout_marginEnd="10dp"
             android:drawableStart="@drawable/edit"
             android:background="@android:color/transparent"
             android:layout_width="30dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
@@ -52,6 +56,7 @@
         android:gravity="center"
 
         >
+
         <at.blogc.android.views.ExpandableTextView
             android:id="@+id/novel_desc"
             android:layout_width="wrap_content"
@@ -68,31 +73,36 @@
             android:gravity="center"
             android:drawableTop="@drawable/down"
             android:layout_height="30dp"
-            android:background="@android:color/transparent"
-        />
+            android:background="@android:color/transparent" />
     </LinearLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:background="@drawable/border_top_5dp"
         android:id="@+id/novel_comment_wrapper"
         android:layout_below="@id/novel_desc_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
-            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="true"
             android:id="@+id/novel_comment_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:background="@drawable/border_top_5dp"
         android:id="@+id/novel_suggest_wrapper"
         android:layout_below="@id/novel_comment_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
+
             android:nestedScrollingEnabled="false"
             android:id="@+id/novel_suggest_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

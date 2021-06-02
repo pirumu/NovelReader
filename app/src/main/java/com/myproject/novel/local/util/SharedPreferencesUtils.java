@@ -5,13 +5,11 @@ import android.content.SharedPreferences;
 
 public class SharedPreferencesUtils {
 
-    private static final String FILE_NAME = "NovelReaderSharedPreferences";
-
 
     public static void setParam(Context context, String key, Object object) {
 
         String type = object.getClass().getSimpleName();
-        SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(UC.STORE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
         switch (type) {
@@ -36,8 +34,11 @@ public class SharedPreferencesUtils {
     }
 
     public static Object getParam(Context context, String key, Object defaultObject) {
+        if (context == null) {
+            return null;
+        }
         String type = defaultObject.getClass().getSimpleName();
-        SharedPreferences sp = context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(UC.STORE, Context.MODE_PRIVATE);
 
         switch (type) {
             case "String":

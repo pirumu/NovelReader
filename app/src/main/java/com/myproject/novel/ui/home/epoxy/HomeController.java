@@ -2,17 +2,19 @@ package com.myproject.novel.ui.home.epoxy;
 
 import com.airbnb.epoxy.Carousel;
 import com.airbnb.epoxy.CarouselModel_;
-import com.airbnb.epoxy.EpoxyModel;
 import com.airbnb.epoxy.TypedEpoxyController;
+import com.myproject.novel.local.util.UC;
+import com.myproject.novel.model.ListNovelHomeModel;
+import com.myproject.novel.model.ListNovelModel;
 import com.myproject.novel.model.NovelModel;
-import com.myproject.novel.model.SwipeModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.airbnb.epoxy.Carousel.setDefaultGlobalSnapHelperFactory;
 
-public class HomeController extends TypedEpoxyController<List<NovelModel>> {
+public class HomeController extends TypedEpoxyController<List<ListNovelHomeModel>> {
 
     private final EpoxyAdapterCallbacks adapterCallbacks;
 
@@ -21,75 +23,102 @@ public class HomeController extends TypedEpoxyController<List<NovelModel>> {
     }
 
     @Override
-    protected void buildModels(List<NovelModel> data) {
-
-
-        List<EpoxySwipeItemModel> swipeModels = new ArrayList<>();
-
-
-        data.forEach( novelModel -> {
-            EpoxySwipeItemModel_ epoxySwipeItemModel_ = new EpoxySwipeItemModel_(new SwipeModel(novelModel.novelId,novelModel.novelTitle,novelModel.novelDescription,novelModel.novelUrl),v -> adapterCallbacks.novelTitleClick(novelModel));
-//             model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
-            epoxySwipeItemModel_.id((long) novelModel.novelId);
-//            model.addTo(this);
-            swipeModels.add(epoxySwipeItemModel_);
-//            model.addTo(this);
-        });
-
-        List<EpoxyNovelModel> epoxyNovelModels = new ArrayList<>();
-//
-//
-        EpoxyHeaderItemModel_ epoxyHeaderItemModel_ =  new EpoxyHeaderItemModel_();
-        epoxyHeaderItemModel_.id("tdc");
-        epoxyHeaderItemModel_.setTypeName("Truyện Đề Cử");
-        epoxyHeaderItemModel_.spanSizeOverride(new EpoxyModel.SpanSizeOverrideCallback() {
-            @Override
-            public int getSpanSize(int totalSpanCount, int position, int itemCount) {
-                return totalSpanCount;
+    protected void buildModels(List<ListNovelHomeModel> listNovelHomeModels) {
+        listNovelHomeModels.forEach(listNovelHomeModel -> {
+            switch (listNovelHomeModel.getType()) {
+                case UC.NOVEL_TYPE_1_ID:
+                    setType1(listNovelHomeModel.getListNovelModel());
+                    setSpecialType(listNovelHomeModel.getListNovelModel());
+                    break;
+                case UC.NOVEL_TYPE_2_ID:
+                    setType2(listNovelHomeModel.getListNovelModel());
+                    setTypeNew(listNovelHomeModel.getListNovelModel());
+                    break;
+                case UC.NOVEL_TYPE_3_ID:
+                    setType3(listNovelHomeModel.getListNovelModel());
+                    break;
             }
         });
+    }
+
+    private void setSpecialType(ListNovelModel listNovelModel) {
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel_.setTypeName(UC.NOVEL_TYPE_SPECIAL);
+        epoxyHeaderItemModel_.spanSizeOverride((totalSpanCount, position, itemCount) -> totalSpanCount);
         epoxyHeaderItemModel_.addTo(this);
-        data.forEach( novelModel -> {
+        listNovelModel.getData().forEach(novelModel -> {
             EpoxyNovelModel_ model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
-            model.id((long) novelModel.novelId);
-//            model.addTo(this);
-            epoxyNovelModels.add(model);
+            model.id(UUID.randomUUID().toString());
             model.addTo(this);
         });
+    }
 
-        setDefaultGlobalSnapHelperFactory(null);
-//        new CarouselModel_()
-//                .id("carousel")
-//                .models(epoxyNovelModels)
-//                .padding(Carousel.Padding.dp(12, 0, 12, 0, 10))
-//                .addTo(this);
-////
-//
-        EpoxyHeaderItemModel_ epoxyHeaderItemModel1_ =  new EpoxyHeaderItemModel_();
-        epoxyHeaderItemModel1_.id("th");
-        epoxyHeaderItemModel1_.setTypeName("Truyện Hot");
+    private void setType1(ListNovelModel listNovelModel) {
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel_.setTypeName(UC.NOVEL_TYPE_1);
+        epoxyHeaderItemModel_.spanSizeOverride((totalSpanCount, position, itemCount) -> totalSpanCount);
+        epoxyHeaderItemModel_.addTo(this);
+        listNovelModel.getData().forEach(novelModel -> {
+            EpoxyNovelModel_ model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
+            model.id(UUID.randomUUID().toString());
+            model.addTo(this);
+        });
+    }
+
+    private void setTypeNew(ListNovelModel listNovelModel) {
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel1_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel1_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel1_.setTypeName(UC.NOVEL_TYPE_NEW);
         epoxyHeaderItemModel1_.addTo(this);
+
+
+        List<EpoxyNovelModel> epoxyNovelModels = new ArrayList<>();
+
+        listNovelModel.getData().forEach(novelModel -> {
+            EpoxyNovelModel_ model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
+            model.id(UUID.randomUUID().toString());
+            epoxyNovelModels.add(model);
+        });
+        setDefaultGlobalSnapHelperFactory(null);
         new CarouselModel_()
-                .id("carousel")
+                .id(UUID.randomUUID().toString())
                 .models(epoxyNovelModels)
                 .padding(Carousel.Padding.dp(0, 0, 10, 0, 0))
                 .addTo(this);
+    }
 
-//        epoxyNovelModels.forEach( epoxyNovelModel -> epoxyNovelModel.addTo(this));
+    private void setType2(ListNovelModel listNovelModel) {
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel1_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel1_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel1_.setTypeName(UC.NOVEL_TYPE_2);
+        epoxyHeaderItemModel1_.addTo(this);
 
 
-        EpoxyHeaderItemModel_ epoxyHeaderItemModel2_ =  new EpoxyHeaderItemModel_();
-        epoxyHeaderItemModel2_.id("tnt");
-        epoxyHeaderItemModel2_.setTypeName("Truyện Kinh Điển");
-        epoxyHeaderItemModel2_.spanSizeOverride(new EpoxyModel.SpanSizeOverrideCallback() {
-            @Override
-            public int getSpanSize(int totalSpanCount, int position, int itemCount) {
-                return totalSpanCount;
-            }
-        }).addTo(this);
-        data.forEach( novelModel -> {
+        List<EpoxyNovelModel> epoxyNovelModels = new ArrayList<>();
+
+        listNovelModel.getData().forEach(novelModel -> {
+            EpoxyNovelModel_ model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
+            model.id(UUID.randomUUID().toString());
+            epoxyNovelModels.add(model);
+        });
+        setDefaultGlobalSnapHelperFactory(null);
+        new CarouselModel_()
+                .id(UUID.randomUUID().toString())
+                .models(epoxyNovelModels)
+                .padding(Carousel.Padding.dp(0, 0, 10, 0, 0))
+                .addTo(this);
+    }
+
+    private void setType3(ListNovelModel listNovelModel) {
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel2_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel2_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel2_.setTypeName(UC.NOVEL_TYPE_3);
+        epoxyHeaderItemModel2_.spanSizeOverride((totalSpanCount, position, itemCount) -> totalSpanCount).addTo(this);
+        listNovelModel.getData().forEach(novelModel -> {
             EpoxyNovelFullModel_ model = new EpoxyNovelFullModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
-            model.id((long) novelModel.novelId);
+            model.id(UUID.randomUUID().toString());
             model.addTo(this);
         });
     }

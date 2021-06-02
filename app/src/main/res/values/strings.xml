@@ -37,4 +37,24 @@
     <string name="register_txt">Đăng ký</string>
     <string name="bookmark_txt">Tủ Sách</string>
     <string name="profile_txt">Thông Tin Cá Nhân</string>
+    <string name="unlike_txt">Bỏ Thích</string>
+    <string name="like_txt">Yêu Thích</string>
+    <string name="end_txt">Hoàn thành</string>
+    <string name="update_txt">Đang cập nhật</string>
+    <string name="author_ta_txt">Thien An</string>
+    <string name="search_now_txt">Tìm kiếm truyện</string>
+    <string name="search_hint_txt">Tìm kiếm truyện</string>
+    <string name="login_now_txt">Đã có tài khoản? Đăng nhập</string>
+    <string name="forgot_password_btn_txt">Lấy lại mật khẩu</string>
+    <string name="back_txt">Trở lại</string>
+    <string name="defaut_color">#00000000</string>
+    <string name="white_color">#FFFFFF</string>
+    <string name="popular_color">#4896f0</string>
+    <string name="tab_layout_color">#323131</string>
+    <string name="example_txt">Tổng hợp</string>
+    <string name="vote_default_txt">Đánh giá:(%s)</string>
+    <string name="bad_txt">Tệ</string>
+    <string name="medium_txt">Trung Bình</string>
+    <string name="good_txt">Tốt</string>
+    <string name="thank_to_vote_txt">Cảm ơn bạn đã đánh giá</string>
 </resources>

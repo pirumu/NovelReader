@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.NovelReader" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -29,9 +29,11 @@
         <item name="android:windowFullscreen">true</item>
 
     </style>
+
     <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/black_color</item>
     </style>
+
     <style name="ThemeOverlay.App.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/colorAccent</item>
     </style>
@@ -41,7 +43,8 @@
         <item name="colorSecondary">@color/black_color</item>
         <item name="colorSurface">@color/black_color</item>
         <item name="colorOnSurface">@color/black_color</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
+        </item>
         <item name="buttonBarPositiveButtonStyle">@style/ThemeOverlay.App.Button</item>
         <item name="buttonBarNeutralButtonStyle">@style/ThemeOverlay.App.Button</item>
         <item name="buttonBarNegativeButtonStyle">@style/ThemeOverlay.App.Button</item>
@@ -62,7 +65,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
@@ -71,17 +75,13 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="AppBottomSheetDialogTheme"
-        parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 
-    <style name="AppModalStyle"
-        parent="Widget.Design.BottomSheet.Modal">
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/rounded_dialog</item>
     </style>
-
-
 
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
@@ -104,13 +104,10 @@
         <item name="bottomSheetStyle">@style/BottomSheet</item>
         <item name="android:colorBackground">@color/white</item>
     </style>
+
     <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
-
-
-
-
 
 
     <!--designs for login and register-->
@@ -243,5 +240,7 @@
         <item name="android:minWidth">250dp</item>
     </style>
 
-
+    <style name="AppSearchView">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

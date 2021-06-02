@@ -1,7 +1,6 @@
 package com.myproject.novel.ui.home.epoxy;
 
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,8 +10,6 @@ import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.myproject.novel.R;
-
-import org.jetbrains.annotations.NotNull;
 
 @EpoxyModelClass
 public abstract class EpoxyHeaderItemModel extends EpoxyModelWithHolder<EpoxyHeaderItemModel.HeaderItemHolder> {
@@ -26,7 +23,7 @@ public abstract class EpoxyHeaderItemModel extends EpoxyModelWithHolder<EpoxyHea
 
     @Override
     protected int getDefaultLayout() {
-        return  R.layout.home_header_title;
+        return R.layout.home_header_title;
     }
 
     @Override

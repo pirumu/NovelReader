@@ -8,20 +8,21 @@
     <color name="teal_700">#4CAF50</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="purple_550"> #4896f0</color>
+    <color name="purple_550">#4896f0</color>
     <color name="transparent">@android:color/transparent</color>
 
-<!--    common-->
+    <!--    common-->
     <color name="primary_color">#e55578</color>
     <color name="second_color">#F695AD</color>
     <color name="black_color">#000</color>
     <color name="tab_color">#323131</color>
     <color name="novel_tab_color">#464242</color>
     <color name="app_background">#FFFFFF</color>
+    <color name="comment_color">#817E7E</color>
     <color name="popular">#4896f0</color>
 
 
-<!--   add-->
+    <!--   add-->
 
     <color name="colorPrimary">#1F5BF3</color>
     <color name="colorPrimaryDark">#0947E8</color>

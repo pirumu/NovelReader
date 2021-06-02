@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="273dp"
-            android:background="@drawable/blue_bg">
-
-            <ImageView
-                android:layout_width="77dp"
-                android:layout_height="77dp"
-                android:layout_marginTop="93dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_launcher_round"/>
-
-        </FrameLayout>
-
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -50,7 +30,7 @@
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <!-- ICON -->
             <ImageView
@@ -59,11 +39,9 @@
                 android:layout_width="14.7dp"
                 android:layout_height="10.3dp"
                 android:layout_marginLeft="17dp"
-                android:layout_centerVertical="true"
-                />
+                android:layout_centerVertical="true" />
 
         </RelativeLayout>
-
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -88,7 +66,7 @@
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:background="@android:color/transparent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <!-- ICON -->
             <ImageView
@@ -97,8 +75,7 @@
                 android:layout_width="14.7dp"
                 android:layout_height="10.3dp"
                 android:layout_marginStart="17dp"
-                android:layout_centerVertical="true"
-                />
+                android:layout_centerVertical="true" />
 
         </RelativeLayout>
 
@@ -107,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="#ffffff"
+            android:textColor="@color/popular"
             android:layout_gravity="center"
             android:gravity="center"
             android:paddingTop="14dp"
@@ -116,86 +93,29 @@
             android:layout_marginRight="62dp"
             android:layout_marginTop="18.7dp"
             android:text="@string/login_txt"
-            android:background="@drawable/blue_fill__rounded_color"
-            />
+            android:clickable="true"
+            android:id="@+id/login_btn"
+            android:background="@drawable/blue_fill__rounded_color" />
 
         <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+            android:id="@+id/forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10.5sp"
+            android:textSize="11sp"
             android:textColor="@color/popular"
             android:layout_marginTop="12dp"
             android:layout_gravity="center"
-            android:text="@string/forgot_password_txt"
-            />
+            android:text="@string/forgot_password_txt" />
 
-
-
-    </LinearLayout>
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+            android:id="@+id/go_register"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="13.7dp"
-            android:orientation="horizontal">
-
-
-            <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Regular
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13.3sp"
-                android:textColor="#aeaeae"
-                android:gravity="center_horizontal"
-                android:text="Hoặc"
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginBottom="35dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="26.7dp"
-                android:layout_height="26.7dp"
-                android:src="@drawable/fb"/>
-
-            <ImageView
-                android:layout_width="26.7dp"
-                android:layout_height="26.7dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/instagram"/>
-
-            <ImageView
-                android:layout_width="26.7dp"
-                android:layout_height="26.7dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/twitter"/>
-
-            <ImageView
-                android:layout_width="26.7dp"
-                android:layout_height="26.7dp"
-                android:src="@drawable/linkedin"/>
-
-        </LinearLayout>
-
-
-
+            android:textSize="10.5sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="@string/register_now_txt" />
     </LinearLayout>
 
 </RelativeLayout>

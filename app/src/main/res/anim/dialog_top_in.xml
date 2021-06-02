@@ -8,5 +8,5 @@
         android:pivotX="100%"
         android:pivotY="0%"
         android:fillAfter="false"
-        android:duration="200"/>
+        android:duration="200" />
 </set>

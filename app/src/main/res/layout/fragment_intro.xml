@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+        android:id="@+id/btn_login"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/popular"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginTop="18.7dp"
+        android:text="@string/login_txt"
+        android:background="@drawable/blue_fill__rounded_color" />
+
+    <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+        android:id="@+id/btn_register"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/popular"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginTop="18.7dp"
+        android:text="@string/register_txt"
+        android:background="@drawable/blue_fill__rounded_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="13.7dp"
+        android:layout_marginBottom="13.7dp"
+        android:orientation="horizontal">
+
+
+        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Regular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13.3sp"
+            android:textColor="#aeaeae"
+            android:gravity="center_horizontal"
+            android:text="Hoặc" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="35dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="26.7dp"
+            android:layout_height="26.7dp"
+            android:src="@drawable/fb" />
+
+        <ImageView
+            android:layout_width="26.7dp"
+            android:layout_height="26.7dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/google" />
+
+        <ImageView
+            android:layout_width="26.7dp"
+            android:layout_height="26.7dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/twitter" />
+
+        <ImageView
+            android:layout_width="26.7dp"
+            android:layout_height="26.7dp"
+            android:src="@drawable/zalo" />
+
+    </LinearLayout>
+
+</LinearLayout>

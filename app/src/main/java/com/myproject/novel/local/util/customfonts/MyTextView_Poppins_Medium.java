@@ -30,4 +30,5 @@ public class MyTextView_Poppins_Medium extends TextView {
         }
     }
 
+
 }

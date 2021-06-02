@@ -10,26 +10,31 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.myproject.novel.CallbackMainActivity;
 import com.myproject.novel.R;
-import com.myproject.novel.model.SwipeModel;
+import com.myproject.novel.local.util.CommonUtils;
+import com.myproject.novel.model.BannerModel;
+import com.myproject.novel.ui.main.CallbackMainActivity;
 import com.myproject.novel.ui.novel.NovelActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
+
+import static com.myproject.novel.local.util.UC.NOVEL_ID;
 
 public class HomeAdapter extends PagerAdapter {
 
-    private CallbackMainActivity mCallback;
-    private Context context;
+    private final CallbackMainActivity mCallback;
+    private final Context context;
 
-    List<SwipeModel> swipeModels;
+    List<BannerModel> bannerModelList;
 
-    public HomeAdapter(Context context, List<SwipeModel> swipeModels,CallbackMainActivity mCallback) {
+    public HomeAdapter(Context context, List<BannerModel> bannerModelList, CallbackMainActivity mCallback) {
         this.context = context;
-        this.swipeModels = swipeModels;
+        this.bannerModelList = bannerModelList;
         this.mCallback = mCallback;
     }
 
@@ -39,24 +44,31 @@ public class HomeAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull @NotNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.swipe_item, container, false);
         ImageView imageView = view.findViewById(R.id.swipe_item_image);
-        SwipeModel swipeModel = swipeModels.get(position);
+        BannerModel bannerModel = bannerModelList.get(position);
 
-        if (swipeModel != null) {
-            Glide.with(context).load(swipeModel.url).transition(
-                    DrawableTransitionOptions.withCrossFade()).into(imageView);
+        if (bannerModel != null) {
+            Glide.with(context).load(bannerModel.getBannerUrl())
+                    .placeholder(CommonUtils.shimmerEffect())
+                    .onlyRetrieveFromCache(true)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView);
+
+            HashMap<String, String> data = new HashMap<>();
+            data.put(NOVEL_ID, String.valueOf(bannerModel.getBannerId()));
+            imageView.setOnClickListener(v -> mCallback.startActivity(NovelActivity.class, data));
         }
-        imageView.setOnClickListener(v-> mCallback.startActivity(NovelActivity.class,null));
+
         container.addView(view);
         return view;
     }
 
     @Override
     public int getCount() {
-        if(swipeModels != null)
-        {
-            return swipeModels.size();
+        if (bannerModelList != null) {
+            return bannerModelList.size();
         }
-        return  0;
+        return 0;
     }
 
     @Override
@@ -66,6 +78,8 @@ public class HomeAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull @NotNull ViewGroup container, int position, @NonNull @NotNull Object object) {
-        container.removeView( (View)object);
+        container.removeView((View) object);
     }
+
+
 }

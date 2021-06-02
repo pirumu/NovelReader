@@ -1,7 +1,6 @@
 package com.myproject.novel.ui.novel.detail.epoxy;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,9 +13,8 @@ import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.myproject.novel.R;
 
 
-
 @EpoxyModelClass
-public abstract  class EpoxyAllCommentModel extends EpoxyModelWithHolder<EpoxyAllCommentModel.EpoxyAllCommentHolder> {
+public abstract class EpoxyAllCommentModel extends EpoxyModelWithHolder<EpoxyAllCommentModel.EpoxyAllCommentHolder> {
 
     @EpoxyAttribute
     public Integer totalComment;
@@ -24,7 +22,7 @@ public abstract  class EpoxyAllCommentModel extends EpoxyModelWithHolder<EpoxyAl
     public View.OnClickListener clickListener;
 
 
-    public  EpoxyAllCommentModel(Integer totalComment,View.OnClickListener clickListener) {
+    public EpoxyAllCommentModel(Integer totalComment, View.OnClickListener clickListener) {
         this.clickListener = clickListener;
         this.totalComment = totalComment;
     }

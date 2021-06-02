@@ -1,12 +1,13 @@
 package com.myproject.novel.ui.novel.detail.epoxy;
 
-import com.airbnb.epoxy.EpoxyModel;
 import com.airbnb.epoxy.TypedEpoxyController;
+import com.myproject.novel.local.util.UC;
 import com.myproject.novel.model.NovelModel;
 import com.myproject.novel.ui.home.epoxy.EpoxyHeaderItemModel_;
 import com.myproject.novel.ui.home.epoxy.EpoxyNovelModel_;
 
 import java.util.List;
+import java.util.UUID;
 
 public class SuggestController extends TypedEpoxyController<List<NovelModel>> {
 
@@ -20,14 +21,14 @@ public class SuggestController extends TypedEpoxyController<List<NovelModel>> {
     protected void buildModels(List<NovelModel> data) {
 
 
-        EpoxyHeaderItemModel_ epoxyHeaderItemModel_ =  new EpoxyHeaderItemModel_();
-        epoxyHeaderItemModel_.id("tdc");
-        epoxyHeaderItemModel_.setTypeName("Đề Xuất Liên Quan");
+        EpoxyHeaderItemModel_ epoxyHeaderItemModel_ = new EpoxyHeaderItemModel_();
+        epoxyHeaderItemModel_.id(UUID.randomUUID().toString());
+        epoxyHeaderItemModel_.setTypeName(UC.NOVEL_SUGGEST);
         epoxyHeaderItemModel_.spanSizeOverride((totalSpanCount, position, itemCount) -> totalSpanCount);
         epoxyHeaderItemModel_.addTo(this);
-        data.forEach( novelModel -> {
+        data.forEach(novelModel -> {
             EpoxyNovelModel_ model = new EpoxyNovelModel_(novelModel, v -> adapterCallbacks.novelTitleClick(novelModel));
-            model.id((long) novelModel.novelId);
+            model.id(novelModel.getNovelId());
             model.addTo(this);
         });
 

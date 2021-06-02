@@ -14,34 +14,37 @@ import com.myproject.novel.R;
 @EpoxyModelClass
 public abstract class EpoxyChapterHeaderItemModel extends EpoxyModelWithHolder<EpoxyChapterHeaderItemModel.HeaderItemHolder> {
 
-    private final String defaultText = "Cập nhật đến chap";
     @EpoxyAttribute
     String currentChapter;
     @EpoxyAttribute
-    public View.OnClickListener clickListener;
+    View.OnClickListener sortOldClick;
+    @EpoxyAttribute
+    View.OnClickListener sortNewClick;
 
-    public EpoxyChapterHeaderItemModel( String currentChapter,View.OnClickListener clickListener) {
-        this.currentChapter= String.format("%s %s",defaultText,currentChapter);
-        this.clickListener = clickListener;
+    public EpoxyChapterHeaderItemModel(String currentChapter, View.OnClickListener sortOldClick, View.OnClickListener sortNewClick) {
+        String defaultText = "Cập nhật đến chương";
+        this.currentChapter = String.format("%s %s", defaultText, currentChapter);
+        this.sortOldClick = sortOldClick;
+        this.sortNewClick = sortNewClick;
     }
 
 
     @Override
     protected int getDefaultLayout() {
-        return  R.layout.chapter_header_item;
+        return R.layout.chapter_header_item;
     }
 
     @Override
     public void bind(@NonNull HeaderItemHolder holder) {
         super.bind(holder);
         holder.updateCurrent.setText(currentChapter);
-        holder.sortNew.setOnClickListener(clickListener);
-        holder.sortOld.setOnClickListener(clickListener);
+        holder.sortNew.setOnClickListener(sortNewClick);
+        holder.sortOld.setOnClickListener(sortOldClick);
     }
 
     static class HeaderItemHolder extends EpoxyHolder {
 
-        public TextView updateCurrent,sortOld,sortNew;
+        public TextView updateCurrent, sortOld, sortNew;
 
         @Override
         protected void bindView(@NonNull View itemView) {

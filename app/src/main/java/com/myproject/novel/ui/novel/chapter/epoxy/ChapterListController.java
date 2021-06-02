@@ -5,7 +5,7 @@ import com.myproject.novel.model.ChapterModel;
 
 import java.util.List;
 
-public class ChapterListController  extends TypedEpoxyController<List<ChapterModel>> {
+public class ChapterListController extends TypedEpoxyController<List<ChapterModel>> {
 
     private final ChapterListController.EpoxyAdapterCallbacks adapterCallbacks;
 
@@ -16,13 +16,13 @@ public class ChapterListController  extends TypedEpoxyController<List<ChapterMod
     @Override
     protected void buildModels(List<ChapterModel> data) {
 
-        EpoxyChapterHeaderItemModel_ echi = new EpoxyChapterHeaderItemModel_("120",v->adapterCallbacks.sortClick(data.get(0)));
+        EpoxyChapterHeaderItemModel_ echi = new EpoxyChapterHeaderItemModel_(String.valueOf(data.size() + 1), v -> adapterCallbacks.sortOldClick(), v -> adapterCallbacks.sortNewClick());
         echi.id("chapter_list_header_id");
         echi.addTo(this);
 
-        data.forEach( chapterModel -> {
-            EpoxyChapterItemModel_  eci = new EpoxyChapterItemModel_(chapterModel.chapterTitle,"28/02/2021",v->adapterCallbacks.chapterTitleClick(chapterModel));
-            eci.id(chapterModel.chapterId);
+        data.forEach(chapterModel -> {
+            EpoxyChapterItemModel_ eci = new EpoxyChapterItemModel_(chapterModel.getChapterTitle(), chapterModel.getCreatedAt(), v -> adapterCallbacks.chapterTitleClick(chapterModel));
+            eci.id(chapterModel.getChapterId());
             eci.addTo(this);
         });
     }
@@ -30,6 +30,9 @@ public class ChapterListController  extends TypedEpoxyController<List<ChapterMod
 
     public interface EpoxyAdapterCallbacks {
         void chapterTitleClick(ChapterModel model);
-        void sortClick(ChapterModel model);
+
+        void sortOldClick();
+
+        void sortNewClick();
     }
 }
