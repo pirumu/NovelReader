@@ -7,6 +7,7 @@
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
+    android:id="@+id/wrap_comment"
     android:layout_marginEnd="2dp"
     android:scrollingCache="true"
 
@@ -86,6 +87,7 @@
                     android:text="Me is its behind decades agency, longer the big times then may to one-by-one, own with by this half subdued parent, this incentive it all you in the slight in gave human nonsense, he I searching opinion." />
 
                 <LinearLayout
+                    android:id="@+id/info_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -108,6 +110,7 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
+                            android:id="@+id/total_reply"
                             android:layout_gravity="center_vertical"
                             android:paddingBottom="5dp"
                             android:paddingLeft="5dp"
@@ -133,6 +136,7 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
+                            android:id="@+id/total_like"
                             android:layout_gravity="center_vertical"
                             android:paddingStart="5dp"
                             android:paddingEnd="5dp"

@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.myproject.novel.model.AuthModel;
 import com.myproject.novel.model.LoginRequestModel;
-import com.myproject.novel.model.NovelModel;
+import com.myproject.novel.model.ProfileModel;
 import com.myproject.novel.ui.auth.AuthRepository;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,37 +27,65 @@ public class LoginViewModel extends ViewModel {
     private final MutableLiveData<AuthModel> _authModel;
     public LiveData<AuthModel> authModel;
 
+    //Login
+    private final MutableLiveData<ProfileModel> _profileModel;
+    public LiveData<ProfileModel> profileModel;
+
     public LoginViewModel() {
         this.compositeDisposable = new CompositeDisposable();
         this.authRepository = new AuthRepository();
         this._authModel = new MutableLiveData<>();
+        this._profileModel = new MutableLiveData<>();
+        this.profileModel = _profileModel;
         this.authModel = _authModel;
     }
 
+    public void getInfo(String auth) {
+        this.compositeDisposable.add(authRepository.getInfo(auth).subscribeWith(infoObserve()));
+    }
 
     public void login(LoginRequestModel loginRequestModel) {
         this.compositeDisposable.add(authRepository.login(loginRequestModel).debounce(200, TimeUnit.MILLISECONDS).subscribeWith(loginObserve()));
+    }
+
+    private DisposableObserver<ProfileModel> infoObserve() {
+        return new DisposableObserver<ProfileModel>() {
+            @Override
+            public void onNext(@NotNull ProfileModel profileModel) {
+                _profileModel.setValue(profileModel);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
     }
 
     private DisposableObserver<AuthModel> loginObserve() {
         return new DisposableObserver<AuthModel>() {
             @Override
             public void onNext(@NotNull AuthModel authModel) {
-                Log.e("LoginError","okie");
+                Log.e("LoginError", "okie");
                 authModel.setCode(200);
                 _authModel.setValue(authModel);
             }
 
             @Override
             public void onError(@NotNull Throwable e) {
-                Log.e("LoginError",e.getMessage());
-               int code = ((HttpException) e).code();
+                Log.e("LoginError", e.getMessage());
+                int code = ((HttpException) e).code();
                 _authModel.setValue(new AuthModel(code));
             }
 
             @Override
             public void onComplete() {
-                Log.e("Login","onComplete");
+                Log.e("Login", "onComplete");
             }
         };
     }

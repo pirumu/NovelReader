@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,46 +38,62 @@ public abstract class EpoxyCommentModel extends EpoxyModelWithHolder<EpoxyCommen
     @EpoxyAttribute
     public View.OnClickListener clickListener;
 
-    public EpoxyCommentModel(CommentModel commentModel, View.OnClickListener clickListener) {
+    @EpoxyAttribute
+    public View.OnClickListener commentClickListener;
+
+
+    public EpoxyCommentModel(CommentModel commentModel, View.OnClickListener clickListener, View.OnClickListener cmClick) {
         this.clickListener = clickListener;
         this.commentModel = commentModel;
-
+        this.commentClickListener = cmClick;
     }
 
 
     @Override
     public void bind(@NonNull EpoxyCommentHolder holder) {
         super.bind(holder);
+
         GlideApp.with(holder.userAvatar.getContext()).asBitmap().load(commentModel.getAvatar())
                 .placeholder(CommonUtils.shimmerEffect())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(new CustomTarget<Bitmap>() {
                     @Override
-                    public void onResourceReady(Bitmap bitmap, Transition<? super Bitmap> transition) {
-                        if (bitmap != null) {
-                            holder.userAvatar.setImageBitmap(bitmap);
-                        }
+                    public void onResourceReady(@NonNull Bitmap bitmap, Transition<? super Bitmap> transition) {
+                        holder.userAvatar.setImageBitmap(bitmap);
                     }
 
                     @Override
                     public void onLoadCleared(Drawable placeholder) {
                     }
                 });
+
         holder.username.setText(commentModel.getNickName());
         holder.content.setText(commentModel.getContent());
+
         if (commentModel.getCreatedAt() != null) {
             holder.createdAt.setText(commentModel.getCreatedAt());
         }
 
-        holder.likeComment.setOnClickListener(v -> holder.likeComment.setImageResource(R.drawable.liked));
+        if (commentModel.isLiked()) {
+            holder.likeComment.setImageResource(R.drawable.liked);
+        } else {
+            holder.likeComment.setImageResource(R.drawable.like);
+        }
 
+        holder.likeComment.setOnClickListener(clickListener);
+
+        holder.totalLike.setText(String.valueOf(commentModel.getTotalLike()));
+        holder.totalReply.setText(String.valueOf(commentModel.getTotalReply()));
+
+        holder.wrapComment.setOnClickListener(commentClickListener);
     }
 
     static class EpoxyCommentHolder extends EpoxyHolder {
 
         public CircleImageView userAvatar;
-        public TextView username, createdAt, content;
+        public TextView username, createdAt, content, totalLike, totalReply;
         public ImageView likeComment;
+        public LinearLayout wrapComment;
 
         @Override
         protected void bindView(@NonNull View itemView) {
@@ -85,6 +102,9 @@ public abstract class EpoxyCommentModel extends EpoxyModelWithHolder<EpoxyCommen
             createdAt = itemView.findViewById(R.id.created_at);
             content = itemView.findViewById(R.id.content);
             likeComment = itemView.findViewById(R.id.like_comment);
+            totalLike = itemView.findViewById(R.id.total_like);
+            totalReply = itemView.findViewById(R.id.total_reply);
+            wrapComment = itemView.findViewById(R.id.wrap_comment);
         }
 
     }

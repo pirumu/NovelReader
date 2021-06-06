@@ -79,23 +79,44 @@
 
         </RelativeLayout>
 
-
-        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/popular"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp"
-            android:layout_marginLeft="62dp"
-            android:layout_marginRight="62dp"
-            android:layout_marginTop="18.7dp"
-            android:text="@string/login_txt"
-            android:clickable="true"
-            android:id="@+id/login_btn"
-            android:background="@drawable/blue_fill__rounded_color" />
+            android:layout_gravity="center_horizontal">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/loading_submit"
+                android:layout_gravity="end"
+                android:layout_alignTop="@+id/login_btn"
+                android:layout_alignEnd="@+id/login_btn" />
+
+            <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/popular"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="18.7dp"
+                android:text="@string/login_txt"
+                android:clickable="true"
+                android:id="@+id/login_btn"
+                android:background="@drawable/blue_fill__rounded_color" />
+        </RelativeLayout>
+
 
         <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
             android:id="@+id/forgot_password"

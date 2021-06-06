@@ -5,6 +5,7 @@ import com.myproject.novel.model.ChapterModel;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class ChapterListController extends TypedEpoxyController<List<ChapterModel>> {
 
     private final ChapterListController.EpoxyAdapterCallbacks adapterCallbacks;

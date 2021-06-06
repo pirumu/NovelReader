@@ -5,7 +5,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class EditText_Poppins_Semi_Bold extends EditText {
+public class EditText_Poppins_Semi_Bold extends androidx.appcompat.widget.AppCompatEditText {
 
     public EditText_Poppins_Semi_Bold(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

@@ -10,9 +10,15 @@ public class UC {
 
     public static final String ACCESS_TOKEN = "access_token";
 
-    public static final String USERNAME = "username";
+    public static final String NICKNAME = "nickname";
 
-    public static final String EMAIL = "username";
+    public static final String BIRTH_DAY = "birth_day";
+
+    public static final String GENDER = "gender";
+
+    public static final String AVATAR = "avatar";
+
+    public static final String EMAIL = "email";
 
     public static final String IS_DARK_STATUS_BAR = "is_dark_status_bar";
 
@@ -24,13 +30,17 @@ public class UC {
     // key
     public static final String IS_SUBMIT = "isSubmit:";
     public static final String NOVEL_ID = "novelId";
+    public static final String TAG_ID = "tagId";
+    public static final String TAG_NAME = "tagName";
     public static final String NOVEL_TITLE = "novelTitle";
     public static final String NO_RESULT = "Không tìm thấy kết quả nào";
+    public static final String NO_NOVEL = "Không có truyện nào";
     public static final String CHAPTER_ID = "chapterId";
     public static final String CLASS_NAME = "className";
     public static final String NOVEL_MODEL = "novelModel";
     public static final String LIST_CHAPTER_MODEL = "listChapterModel";
     public static final String READER_HANDLER = "ReaderHandler";
+    public static final String JUST_WATCHED = "just_watched";
 
 
     //
@@ -44,4 +54,14 @@ public class UC {
     public static final String NOVEL_TYPE_NEW = "Truyện Mới";
     public static final String NOVEL_SUGGEST = "Đề Xuất Liên Quan";
     public static final String TOP_COMMENT = "Top Bình Luận";
+
+
+    //
+
+    public static final int DELAY = 1000;
+    public static final int BLUR = 60;
+    public static final int DEFAULT_STATUS = 0;
+    public static final int DEFAULT_TEXT_SIZE = 14;// update
+    public static final String CLASS_REPLACE = "class ";
+
 }

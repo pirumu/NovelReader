@@ -18,7 +18,7 @@
 
             <!-- INPUT -->
             <com.myproject.novel.local.util.customfonts.EditText_Poppins_Regular
-                android:id="@+id/username_input"
+                android:id="@+id/email"
                 android:layout_toEndOf="@+id/username_icon"
                 android:hint="@string/email_txt"
                 android:textSize="12sp"
@@ -54,21 +54,34 @@
 
         </RelativeLayout>
 
-
-        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/popular"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp"
-            android:layout_marginLeft="62dp"
-            android:layout_marginRight="62dp"
-            android:text="@string/forgot_password_btn_txt"
-            android:id="@+id/login_btn"
-            android:background="@drawable/blue_fill__rounded_color" />
+            android:layout_gravity="center_horizontal">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/loading_submit"
+                android:layout_gravity="end"
+                android:layout_alignTop="@+id/reset_btn"
+                android:layout_alignEnd="@+id/reset_btn" />
+
+            <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+                android:id="@+id/reset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/popular"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:text="@string/forgot_password_btn_txt"
+                android:background="@drawable/blue_fill__rounded_color" />
+        </RelativeLayout>
 
         <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
             android:id="@+id/go_register"

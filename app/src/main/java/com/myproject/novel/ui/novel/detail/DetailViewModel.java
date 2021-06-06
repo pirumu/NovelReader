@@ -5,17 +5,21 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.myproject.novel.model.ChapterModel;
+import com.myproject.novel.model.CommentModel;
 import com.myproject.novel.model.ListCommentModel;
 import com.myproject.novel.model.NovelModel;
+import com.myproject.novel.model.ReplyCommentRequestModel;
 import com.myproject.novel.ui.novel.NovelRepository;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 
+@SuppressWarnings("deprecation")
 public class DetailViewModel extends ViewModel {
 
     private final NovelRepository novelRepository;
@@ -33,8 +37,28 @@ public class DetailViewModel extends ViewModel {
     private final MutableLiveData<Boolean> _like;
     public LiveData<Boolean> like;
 
-    public DetailViewModel(int novelId, String auth) {
+    //like
+    private final MutableLiveData<Boolean> _likeComment;
+    public LiveData<Boolean> likeComment;
+
+    //comment
+
+    private final MutableLiveData<Boolean> _commentNovel;
+    public LiveData<Boolean> commentNovel;
+
+    private final MutableLiveData<List<CommentModel>> _replyList;
+    public LiveData<List<CommentModel>> replyList;
+
+
+    private final MutableLiveData<List<NovelModel>> _listSuggest;
+    public LiveData<List<NovelModel>> listSuggest;
+
+    private final int _novelId, _tagId;
+
+    public DetailViewModel(int tagId, int novelId, String auth) {
         //
+        _novelId = novelId;
+        _tagId = tagId;
         novelRepository = new NovelRepository();
         compositeDisposable = new CompositeDisposable();
         _novelModel = new MutableLiveData<>();
@@ -45,19 +69,33 @@ public class DetailViewModel extends ViewModel {
         listChapter = _listChapter;
         listCommentModel = _listCommentModel;
         like = _like;
-        //
+        _likeComment = new MutableLiveData<>();
+        likeComment = _like;
+        _commentNovel = new MutableLiveData<>();
+        commentNovel = _commentNovel;
+
+        _replyList = new MutableLiveData<>();
+        replyList = _replyList;
+        _listSuggest = new MutableLiveData<>();
+        listSuggest = _listSuggest;
+
 
         fetchNovelDetail(auth, novelId);
         fetchListChapter(novelId);
-        fetchComments(0, 10, novelId);
+//        fetchComments(0, 10, novelId);
     }
 
-    private void fetchNovelDetail(String auth, int novelId) {
+
+    public void fetchNovelSuggest(int tagId) {
+        compositeDisposable.add(novelRepository.getList(tagId, _novelId).subscribeWith(fetchSuggestListObserver()));
+    }
+
+    public void fetchNovelDetail(String auth, int novelId) {
 
         compositeDisposable.add(novelRepository.fetchDetail(novelId, auth).subscribeWith(fetchNovelDetailObserver()));
     }
 
-    private void fetchListChapter(int novelId) {
+    public void fetchListChapter(int novelId) {
         compositeDisposable.add(novelRepository.fetchListChapter(novelId).subscribeWith(fetchListChapterObserver()));
     }
 
@@ -66,11 +104,29 @@ public class DetailViewModel extends ViewModel {
     }
 
     public void rateNovel(String auth, int novelId, float star) {
-        compositeDisposable.add(novelRepository.voteNovel(novelId,star, auth).subscribeWith(rateObserver()));
+        compositeDisposable.add(novelRepository.voteNovel(novelId, star, auth).subscribeWith(rateObserver()));
     }
 
     public void likeNovel(String auth, int novelId) {
-        compositeDisposable.add(novelRepository.likeNovel(novelId, auth).subscribeWith(likeObserver()));
+        compositeDisposable.add(novelRepository.likeNovel(novelId, auth).subscribeWith(likeNovelObserver()));
+    }
+
+    public void likeCommentUser(String auth, int commentId) {
+        compositeDisposable.add(novelRepository.likeComment(commentId, auth).subscribeWith(likeCommentObserver()));
+    }
+
+    public void commentUserNovel(String auth, int commentId, ReplyCommentRequestModel replyCommentRequestModel) {
+        compositeDisposable.add(novelRepository.replyComment(replyCommentRequestModel, commentId, auth).subscribeWith(commentNovelObserver()));
+    }
+
+    public void fetchReplyList(String auth, int commentId) {
+        if (commentId == -1) {
+            compositeDisposable.add(novelRepository.getListComment(this._novelId, auth).subscribeWith(fetchReplyListObserver()));
+
+        } else {
+            compositeDisposable.add(novelRepository.getListReplyComment(commentId, auth).subscribeWith(fetchReplyListObserver()));
+
+        }
     }
 
 
@@ -84,7 +140,7 @@ public class DetailViewModel extends ViewModel {
 
             @Override
             public void onError(@NotNull Throwable e) {
-                e.getMessage();
+
             }
 
             @Override
@@ -147,7 +203,7 @@ public class DetailViewModel extends ViewModel {
     }
 
 
-    private DisposableObserver<Boolean> likeObserver() {
+    private DisposableObserver<Boolean> likeNovelObserver() {
         return new DisposableObserver<Boolean>() {
             @Override
             public void onNext(@NotNull Boolean aBoolean) {
@@ -165,4 +221,83 @@ public class DetailViewModel extends ViewModel {
             }
         };
     }
+
+    private DisposableObserver<Boolean> likeCommentObserver() {
+        return new DisposableObserver<Boolean>() {
+            @Override
+            public void onNext(@NotNull Boolean aBoolean) {
+                _likeComment.setValue(aBoolean);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable e) {
+                _likeComment.setValue(false);
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+    }
+
+    private DisposableObserver<Boolean> commentNovelObserver() {
+        return new DisposableObserver<Boolean>() {
+            @Override
+            public void onNext(@NotNull Boolean aBoolean) {
+                _commentNovel.setValue(aBoolean);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable e) {
+                _commentNovel.setValue(false);
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+    }
+
+
+    private DisposableObserver<List<CommentModel>> fetchReplyListObserver() {
+        return new DisposableObserver<List<CommentModel>>() {
+            @Override
+            public void onNext(@NotNull List<CommentModel> commentModels) {
+                _replyList.setValue(commentModels);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable e) {
+                _replyList.setValue(new ArrayList<>());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+    }
+
+
+    private DisposableObserver<List<NovelModel>> fetchSuggestListObserver() {
+        return new DisposableObserver<List<NovelModel>>() {
+            @Override
+            public void onNext(@NotNull List<NovelModel> list) {
+                _listSuggest.setValue(list);
+            }
+
+            @Override
+            public void onError(@NotNull Throwable e) {
+                _listSuggest.setValue(new ArrayList<>());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        };
+    }
+
 }

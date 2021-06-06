@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class ChapterFragment extends Fragment implements ChapterListController.EpoxyAdapterCallbacks {
 
     private CallbackNovelActivity mCallback;
@@ -74,31 +75,31 @@ public class ChapterFragment extends Fragment implements ChapterListController.E
         HashMap<String, String> data = new HashMap<>();
         data.put(UC.CHAPTER_ID, String.valueOf(model.getChapterId()));
         data.put(UC.NOVEL_ID, String.valueOf(model.getNovelId()));
-        mCallback.startActivity(ReadActivity.class, data);
+        CommonUtils.startActivity(requireActivity(), ReadActivity.class, data);
     }
 
     @Override
     public void sortNewClick() {
         currentTextActive = rootView.findViewById(R.id.sort_new);
-        currentTextActive.setTextColor(Color.parseColor("#4896f0"));
+        currentTextActive.setTextColor(Color.parseColor(getString(R.string.popular_color)));
         currentTextActive = rootView.findViewById(R.id.sort_old);
-        currentTextActive.setTextColor(Color.parseColor("#8A8383"));
+        currentTextActive.setTextColor(Color.parseColor(getString(R.string.sort_defaut_color)));
         chapterListController.setData(revertList);
     }
 
     @Override
     public void sortOldClick() {
         currentTextActive = rootView.findViewById(R.id.sort_old);
-        currentTextActive.setTextColor(Color.parseColor("#4896f0"));
+        currentTextActive.setTextColor(Color.parseColor(getString(R.string.popular_color)));
         currentTextActive = rootView.findViewById(R.id.sort_new);
-        currentTextActive.setTextColor(Color.parseColor("#8A8383"));
+        currentTextActive.setTextColor(Color.parseColor(getString(R.string.sort_defaut_color)));
         chapterListController.setData(listChapter);
     }
 
     private void setController(Context ctx) {
         chapterListController = new ChapterListController(this);
         RecyclerView listChapterRecyclerView = rootView.findViewById(R.id.list_chapter);
-        listChapterRecyclerView.setHasFixedSize(true);
+//        listChapterRecyclerView.setHasFixedSize(true);
         listChapterRecyclerView.setLayoutManager(new LinearLayoutManager(ctx));
         listChapterRecyclerView.setAdapter(chapterListController.getAdapter());
     }

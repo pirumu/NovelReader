@@ -18,7 +18,7 @@ public class NovelModel {
     private String novelLike;
     private List<CommentModel> comments;
     private Boolean userLiked;
-//    private ChapterModel chapterModel;
+    private int commentsCount;
 
     public NovelModel(int novelId, String novelTitle, String novelDescription, String novelCoverPhoto) {
         this.novelId = novelId;
@@ -71,6 +71,24 @@ public class NovelModel {
         this.novelLike = novelLike;
         this.comments = comments;
         this.userLiked = userLiked;
+    }
+
+
+    public NovelModel(int novelId, String novelTitle, String novelDescription, String novelCoverPhotoUrl, int novelTotalChapter, String novelView, int novelStatus, AuthorModel author, TagModel tag, float novelRate, String novelLike, List<CommentModel> comments, Boolean userLiked, int commentsCount) {
+        this.novelId = novelId;
+        this.novelTitle = novelTitle;
+        this.novelDescription = novelDescription;
+        this.novelCoverPhotoUrl = novelCoverPhotoUrl;
+        this.novelTotalChapter = novelTotalChapter;
+        this.novelView = novelView;
+        this.novelStatus = novelStatus;
+        this.author = author;
+        this.tag = tag;
+        this.novelRate = novelRate;
+        this.novelLike = novelLike;
+        this.comments = comments;
+        this.userLiked = userLiked;
+        this.commentsCount = commentsCount;
     }
 
     public int getNovelId() {
@@ -176,5 +194,13 @@ public class NovelModel {
 
     public void setUserLiked(Boolean userLiked) {
         this.userLiked = userLiked;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 }

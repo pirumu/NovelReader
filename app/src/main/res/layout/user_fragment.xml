@@ -10,7 +10,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:fitsSystemWindows="false"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:background="@color/white"
-            app:contentScrim="@color/popular"
+            app:contentScrim="@color/cover_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar"
             app:expandedTitleMarginEnd="64dp"
@@ -40,14 +40,26 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/bg_cover" />
 
+                <TextView
+                    android:id="@+id/nickname"
+                    android:layout_below="@+id/img_background"
+                    android:layout_centerHorizontal="false"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="-30dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    style="@style/profileDetailsMiniText" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_below="@+id/img_background"
                     android:layout_centerHorizontal="false"
                     android:layout_marginStart="20sp"
-                    android:layout_marginTop="-60dp"
-                    android:src="@drawable/nothing" />
+                    android:layout_marginTop="-55dp"
+                    android:id="@+id/user_avatar"
+                    android:src="@drawable/profile_avt" />
 
 
             </RelativeLayout>
@@ -77,23 +89,14 @@
 
             <RelativeLayout style="@style/profileDetailsLayout">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/nameImageView"
-                    android:src="@drawable/username_pf"
-                    style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:id="@+id/nameTextView"
-                    android:text="Họ và Tên"
-                    android:layout_toEndOf="@id/nameImageView"
+                    android:text="@string/profile_email_txt"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
+                    android:id="@+id/email"
                     android:paddingTop="20dp"
-                    android:text="developer"
-                    android:layout_toEndOf="@id/nameImageView"
                     style="@style/profileDetailsMiniText" />
 
             </RelativeLayout>
@@ -102,22 +105,15 @@
 
             <RelativeLayout style="@style/profileDetailsLayout">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/emailImageView"
-                    android:src="@drawable/email_pf"
-                    style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="Địa chỉ Email"
-                    android:layout_toEndOf="@id/emailImageView"
+                    android:text="@string/gender_txt"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
+                    android:id="@+id/gender"
                     android:paddingTop="20dp"
-                    android:text="developer@appsnipp.com"
-                    android:layout_toEndOf="@id/emailImageView"
+                    android:text=""
                     style="@style/profileDetailsMiniText" />
 
             </RelativeLayout>
@@ -126,51 +122,50 @@
 
             <RelativeLayout style="@style/profileDetailsLayout">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/addressImageView"
-                    android:src="@drawable/gender_pf"
-                    style="@style/profileDetailsImage" />
 
                 <TextView
-                    android:text="Giới tính"
-                    android:layout_toEndOf="@id/addressImageView"
+                    android:text="@string/birth_day_txt"
                     style="@style/profileDetailsTextMain" />
 
                 <TextView
+                    android:id="@+id/birthday"
                     android:paddingTop="20dp"
-                    android:text="Avenue 2nd Street NW SY."
-                    android:layout_toEndOf="@id/addressImageView"
+
                     style="@style/profileDetailsMiniText" />
 
             </RelativeLayout>
 
             <View style="@style/proifleDetailsView" />
 
-            <RelativeLayout style="@style/profileDetailsLayout">
+            <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:layout_marginTop="18.7dp"
+                android:text="@string/update_info_txt"
+                android:clickable="true"
+                android:id="@+id/update_info_btn"
+                android:background="@drawable/blue_fill__rounded_color" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/dobImageView"
-                    android:src="@drawable/birthday_pf"
-                    style="@style/profileDetailsImage" />
-
-                <TextView
-                    android:text="Sinh nhật"
-                    android:layout_toEndOf="@id/dobImageView"
-                    style="@style/profileDetailsTextMain" />
-
-                <TextView
-                    android:paddingTop="20dp"
-                    android:text="12-05-1990"
-                    android:layout_toEndOf="@id/dobImageView"
-                    style="@style/profileDetailsMiniText" />
-
-            </RelativeLayout>
-
-            <View style="@style/proifleDetailsView" />
+            <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:layout_marginTop="18.7dp"
+                android:text="@string/logout_txt"
+                android:clickable="true"
+                android:id="@+id/logout_btn"
+                android:background="@drawable/blue_fill_full_rounded_color" />
 
         </LinearLayout>
 

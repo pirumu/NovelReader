@@ -14,11 +14,7 @@ import com.myproject.novel.ui.auth.CallbackAuthActivity;
 
 import org.jetbrains.annotations.NotNull;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link IntroFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class IntroFragment extends Fragment {
     private CallbackAuthActivity mCallback;
     private View rootView;

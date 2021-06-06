@@ -18,12 +18,15 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.myproject.novel.R;
 import com.myproject.novel.local.util.CommonUtils;
+import com.myproject.novel.local.util.UC;
 import com.myproject.novel.model.TagModel;
+import com.myproject.novel.ui.filter.FilterActivity;
 import com.myproject.novel.ui.main.CallbackMainActivity;
-import com.myproject.novel.ui.novel.NovelActivity;
 import com.myproject.novel.ui.tag.epoxy.TagController;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 public class TagFragment extends Fragment implements TagController.EpoxyAdapterCallbacks {
 
@@ -54,9 +57,7 @@ public class TagFragment extends Fragment implements TagController.EpoxyAdapterC
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(TagViewModel.class);
-        mViewModel.tagModelList.observe(getViewLifecycleOwner(), res -> {
-            filterController.setData(res);
-        });
+        mViewModel.tagModelList.observe(getViewLifecycleOwner(), res -> filterController.setData(res));
     }
 
     private void setController(Context ctx) {
@@ -73,14 +74,17 @@ public class TagFragment extends Fragment implements TagController.EpoxyAdapterC
 
     @Override
     public void tagClick(TagModel model) {
-        mCallback.startActivity(NovelActivity.class, null);
+        HashMap<String, String> data = new HashMap<>();
+        data.put(UC.TAG_ID, String.valueOf(model.getTagId()));
+        data.put(UC.TAG_NAME, model.getTagName());
+        CommonUtils.startActivity(requireActivity(), FilterActivity.class, data);
     }
 
 
     private void loadNestedScrollView(Activity activity) {
         CommonUtils.clearLightStatusBar(activity);
-        mCallback.changeTabLayoutColor("#4896f0", "#323131");
-        mCallback.changeToolbarBackgroundColor("#FFFFFF", "#FFFFFF", 0);
+        mCallback.changeTabLayoutColor(getString(R.string.popular_color), getString(R.string.tab_layout_color));
+        mCallback.changeToolbarBackgroundColor(getString(R.string.white_color), getString(R.string.white_color), 0);
     }
 
     @Override

@@ -12,6 +12,10 @@ public class ListNovelModel {
         this.meta = meta;
     }
 
+    public ListNovelModel() {
+
+    }
+
     public List<NovelModel> getData() {
         if (data == null) {
             return new ArrayList<>();

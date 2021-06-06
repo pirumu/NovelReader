@@ -9,6 +9,12 @@ public class CommentModel {
     private int parentId;
     private int totalLike;
     private int userId;
+    private boolean liked;
+    private int totalReply;
+
+    public CommentModel() {
+
+    }
 
     public CommentModel(int commentId, String content, String createdAt) {
         this.commentId = commentId;
@@ -25,6 +31,18 @@ public class CommentModel {
         this.parentId = parentId;
         this.totalLike = totalLike;
         this.userId = userId;
+    }
+
+    public CommentModel(int commentId, String content, String createdAt, String nickName, String avatar, int parentId, int totalLike, int userId, boolean liked) {
+        this.commentId = commentId;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.nickName = nickName;
+        this.avatar = avatar;
+        this.parentId = parentId;
+        this.totalLike = totalLike;
+        this.userId = userId;
+        this.liked = liked;
     }
 
     public int getCommentId() {
@@ -89,5 +107,21 @@ public class CommentModel {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
+    }
+
+    public int getTotalReply() {
+        return totalReply;
+    }
+
+    public void setTotalReply(int totalReply) {
+        this.totalReply = totalReply;
     }
 }

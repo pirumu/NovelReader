@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 
-public class MyTextView_Poppins_SemiBold extends TextView {
+public class MyTextView_Poppins_SemiBold extends androidx.appcompat.widget.AppCompatTextView {
 
     public MyTextView_Poppins_SemiBold(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

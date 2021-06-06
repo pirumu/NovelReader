@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.myproject.novel.R;
 import com.myproject.novel.local.util.FragmentCallBack;
-import com.myproject.novel.ui.novel.detail.DetailFragment;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -22,7 +21,8 @@ import per.wsj.library.AndRatingBar;
 public class RateBottomSheetDialog extends BottomSheetDialogFragment {
 
     public FragmentCallBack fragmentCallBack;
-    public RateBottomSheetDialog( FragmentCallBack fcb){
+
+    public RateBottomSheetDialog(FragmentCallBack fcb) {
         this.fragmentCallBack = fcb;
     }
 

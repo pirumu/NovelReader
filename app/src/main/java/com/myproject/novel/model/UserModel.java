@@ -4,6 +4,8 @@ public class UserModel {
     public Integer userId;
     public String username;
     public String avatar;
+    public String email;
+
 
     public UserModel(Integer userId, String username, String avatar) {
         this.userId = userId;

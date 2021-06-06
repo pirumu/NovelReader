@@ -1,6 +1,8 @@
 package com.myproject.novel.ui.novel.detail.epoxy;
 
-import com.airbnb.epoxy.TypedEpoxyController;
+import android.view.View;
+
+import com.airbnb.epoxy.Typed2EpoxyController;
 import com.myproject.novel.local.util.UC;
 import com.myproject.novel.model.CommentModel;
 import com.myproject.novel.ui.home.epoxy.EpoxyHeaderItemModel_;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CommentController extends TypedEpoxyController<List<CommentModel>> {
+public class CommentController extends Typed2EpoxyController<List<CommentModel>, Integer> {
 
     private final CommentController.EpoxyAdapterCallbacks adapterCallbacks;
     private final int novelId;
@@ -20,7 +22,7 @@ public class CommentController extends TypedEpoxyController<List<CommentModel>> 
     }
 
     @Override
-    protected void buildModels(List<CommentModel> data) {
+    protected void buildModels(List<CommentModel> data, Integer totalComment) {
         if (data == null) {
             data = new ArrayList<>();
         }
@@ -36,11 +38,11 @@ public class CommentController extends TypedEpoxyController<List<CommentModel>> 
             epoxyHeaderItemModel_.addTo(this);
 
             data.forEach(commentModel -> {
-                EpoxyCommentModel_ ecm = new EpoxyCommentModel_(commentModel, v -> adapterCallbacks.commentClick(commentModel));
+                EpoxyCommentModel_ ecm = new EpoxyCommentModel_(commentModel, v -> adapterCallbacks.likeComment(v, commentModel), v -> adapterCallbacks.commentClick(commentModel));
                 ecm.id(commentModel.getCommentId()).addTo(this);
 
             });
-            EpoxyAllCommentModel_ eacm = new EpoxyAllCommentModel_(120, v -> adapterCallbacks.commentClick(null));
+            EpoxyAllCommentModel_ eacm = new EpoxyAllCommentModel_(totalComment, v -> adapterCallbacks.noCommentClick());
             eacm.id(UUID.randomUUID().toString());
             eacm.addTo(this);
 
@@ -49,6 +51,10 @@ public class CommentController extends TypedEpoxyController<List<CommentModel>> 
 
     public interface EpoxyAdapterCallbacks {
         void commentClick(CommentModel model);
+
+        void replyComment(CommentModel model);
+
+        void likeComment(View v, CommentModel model);
 
         void noCommentClick();
     }

@@ -15,7 +15,6 @@ import com.myproject.novel.ui.auth.login.LoginFragment;
 import com.myproject.novel.ui.auth.register.RegisterFragment;
 import com.myproject.novel.ui.main.MainActivity;
 
-
 public class AuthActivity extends AppCompatActivity implements CallbackAuthActivity {
 
     @Override
@@ -59,16 +58,13 @@ public class AuthActivity extends AppCompatActivity implements CallbackAuthActiv
 
     @Override
     public void onBackPressed() {
-        if ((Boolean) SharedPreferencesUtils.getParam(getApplicationContext(), UC.IS_USER_LOGGED_IN, false)) {
-            super.onBackPressed();
-        } else {
-            String classNameShare = (String) SharedPreferencesUtils.getParam(getApplicationContext(), UC.ACTIVITY_BEFORE, MainActivity.class.toString());
-            int keyId =  (int)SharedPreferencesUtils.getParam(getApplicationContext(),UC.DATA_ACTIVITY_BEFORE,1);
-            try {
-                CommonUtils.startActivity(this, Class.forName(classNameShare), CommonUtils.buildData(classNameShare,String.valueOf(keyId)));
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+
+        String classNameShare = (String) SharedPreferencesUtils.getParam(getApplicationContext(), UC.ACTIVITY_BEFORE, MainActivity.class.toString());
+        int keyId = (int) SharedPreferencesUtils.getParam(getApplicationContext(), UC.DATA_ACTIVITY_BEFORE, 1);
+        try {
+            CommonUtils.startActivity(this, classNameShare.equals("MainActivity") ? MainActivity.class : Class.forName(classNameShare), CommonUtils.buildData(classNameShare, String.valueOf(keyId)));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

@@ -2,12 +2,12 @@ package com.myproject.novel.model;
 
 public class RegisterRequestModel {
     public String email;
-    public String fullName;
+    public String nickname;
     public String password;
 
-    public RegisterRequestModel(String email, String fullName, String password) {
+    public RegisterRequestModel(String email, String nickname, String password) {
         this.email = email;
-        this.fullName = fullName;
+        this.nickname = nickname;
         this.password = password;
     }
 }

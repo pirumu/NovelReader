@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -12,11 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.myproject.novel.R;
+import com.myproject.novel.local.util.CommonUtils;
 import com.myproject.novel.local.util.JavaScriptInterface;
 import com.myproject.novel.local.util.UC;
 import com.myproject.novel.net.C;
 
-
+@SuppressWarnings("deprecation")
 public class ReadActivity extends AppCompatActivity {
 
     private String url = C.BASE_URL + "/read/";
@@ -25,6 +27,7 @@ public class ReadActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CommonUtils.setFullScreenWithStatusBar(this, true);
         setContentView(R.layout.activity_read);
         WebView myWebView = findViewById(R.id.novel_read_webview);
         WebSettings webSettings = myWebView.getSettings();
@@ -69,5 +72,21 @@ public class ReadActivity extends AppCompatActivity {
             }
         }
         handler.post(new MyThread());
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        hideSystemUI();
+
+    }
+
+    private void hideSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 }

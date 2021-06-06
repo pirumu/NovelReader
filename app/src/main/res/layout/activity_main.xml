@@ -82,6 +82,40 @@
                     android:textStyle="bold" />
             </com.google.android.material.tabs.TabLayout>
 
+            <com.google.android.material.tabs.TabLayout
+                android:visibility="gone"
+                android:id="@+id/app_tab_book_store"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:background="@android:color/transparent"
+                app:tabGravity="center"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@null"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabTextColor="@color/white"
+                android:layout_marginBottom="2dp"
+                app:tabIndicatorAnimationDuration="500"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabUnboundedRipple="false">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/suggest_txt"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/explore_txt"
+                    android:textStyle="bold" />
+            </com.google.android.material.tabs.TabLayout>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/find_now"
                 android:layout_width="0dp"

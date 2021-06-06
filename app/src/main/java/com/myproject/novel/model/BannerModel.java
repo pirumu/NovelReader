@@ -30,8 +30,8 @@ public class BannerModel {
     }
 
     public String getBannerUrl() {
-        if(bannerUrl != null) {
-            return C.BASE_URL + "/" +bannerUrl;
+        if (bannerUrl != null) {
+            return C.BASE_URL + "/" + bannerUrl;
         }
         return null;
     }

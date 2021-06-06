@@ -52,13 +52,13 @@
             android:layout_width="match_parent"
             android:visibility="gone" />
 
-        <include
-            android:id="@+id/no_record_include"
-            layout="@layout/no_record"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+        <!--        <include-->
+        <!--            android:id="@+id/no_record_include"-->
+        <!--            layout="@layout/no_record"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_width="match_parent"-->
 
-            />
+        <!--            />-->
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -90,7 +90,7 @@
         <ImageView
             android:clickable="true"
             android:layout_weight="0.1"
-            android:id="@+id/structured_imagebutton_takePhoto"
+            android:id="@+id/send_comment"
             android:layout_width="0dp"
             android:layout_margin="10dp"
             android:layout_marginTop="24dp"
@@ -117,12 +117,12 @@
             android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/list_comment_modal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:padding="8dp"
-                app:stackFromEnd="true"></androidx.recyclerview.widget.RecyclerView>
+                app:stackFromEnd="true" />
 
         </LinearLayout>
     </ScrollView>

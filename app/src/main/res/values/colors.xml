@@ -35,4 +35,5 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="cover_color">#c0794f</color>
 </resources>

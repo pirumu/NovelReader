@@ -1,6 +1,5 @@
 package com.myproject.novel.ui.start;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.myproject.novel.R;
 import com.myproject.novel.local.util.CommonUtils;
-import com.myproject.novel.ui.auth.AuthActivity;
+import com.myproject.novel.local.util.UC;
 import com.myproject.novel.ui.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -31,17 +30,12 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void checkBeforeStart() {
-        new Handler(Looper.getMainLooper()).postDelayed(this::openMainActivity, 1000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::openMainActivity, UC.DELAY);
     }
 
-    private void openAuthActivity() {
-        startActivity(new Intent(SplashActivity.this, AuthActivity.class));
-        finish();
-    }
 
     private void openMainActivity() {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        finish();
+        CommonUtils.startActivity(this, MainActivity.class, null);
     }
 
 }

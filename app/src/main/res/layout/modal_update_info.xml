@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginTop="36.7dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_avatar"
+                android:padding="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/profile_avt" />
+
+            <TextView
+                android:id="@+id/choice_img_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/black"
+                android:text="@string/choice_img_txt" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+
+            <!-- INPUT -->
+            <com.myproject.novel.local.util.customfonts.EditText_Poppins_Regular
+                android:id="@+id/email_input"
+                android:hint="@string/email_txt"
+                android:textSize="12sp"
+                android:focusable="false"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/email_icon" />
+
+            <!-- ICON -->
+            <ImageView
+                android:id="@+id/email_icon"
+                android:src="@drawable/email_pf"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginLeft="17dp"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <com.myproject.novel.local.util.customfonts.EditText_Poppins_Regular
+                android:id="@+id/nickname_input"
+                android:layout_toEndOf="@+id/username1_icon"
+                android:hint="@string/nickname_txt"
+                android:textSize="12sp"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- ICON -->
+            <ImageView
+                android:id="@+id/username1_icon"
+                android:src="@drawable/username_pf"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="17dp"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <com.myproject.novel.local.util.customfonts.EditText_Poppins_Regular
+                android:id="@+id/gender_input"
+                android:hint="@string/gender_txt"
+                android:textSize="12sp"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingTop="15dp"
+                android:maxLines="1"
+                android:paddingBottom="15dp"
+                android:maxLength="10"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/password_icon" />
+
+            <Spinner
+                android:gravity="center_vertical"
+                android:id="@+id/gender_list"
+                android:layout_alignParentBottom="@+id/gender_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp" />
+
+            <!-- ICON -->
+            <ImageView
+                android:id="@+id/password_icon"
+                android:src="@drawable/gender_pf"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="17dp"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_cornwe">
+
+            <!-- INPUT -->
+            <com.myproject.novel.local.util.customfonts.EditText_Poppins_Regular
+                android:id="@+id/birthday_input"
+                android:layout_toEndOf="@+id/icon"
+                android:hint="@string/birth_day_txt"
+                android:textSize="12sp"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:paddingTop="15dp"
+                android:maxLines="1"
+                android:paddingBottom="15dp"
+                android:maxLength="10"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:focusable="false"
+                android:layout_height="wrap_content" />
+
+            <!-- ICON -->
+            <ImageView
+                android:id="@+id/icon"
+                android:src="@drawable/birthday_pf"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="17dp"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+            android:id="@+id/btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="18.7dp"
+            android:text="@string/update_now_txt"
+            android:background="@drawable/blue_fill_full_rounded_color" />
+
+        <com.myproject.novel.local.util.customfonts.MyTextView_Poppins_Medium
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="18.7dp"
+            android:text="@string/cancel_txt"
+            android:background="@drawable/blue_fill__rounded_color" />
+    </LinearLayout>
+
+</RelativeLayout>

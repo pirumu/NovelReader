@@ -20,17 +20,13 @@ import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerDrawable;
 import com.myproject.novel.R;
 import com.myproject.novel.model.ChapterModel;
-import com.myproject.novel.ui.main.MainActivity;
 import com.myproject.novel.ui.novel.NovelActivity;
-import com.myproject.novel.ui.novel.ReadActivity;
-import com.myproject.novel.ui.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+@SuppressWarnings("deprecation")
 public class CommonUtils {
-
 
     public static boolean checkHasNavigationBar(Activity activity) {
         WindowManager windowManager = activity.getWindowManager();
@@ -92,28 +88,18 @@ public class CommonUtils {
     }
 
     public static void hideSystemUI(Activity activity) {
-        // Enables regular immersive mode.
-        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         View decorView = activity.getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        // Hide the nav bar
+
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
         );
-        activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.white));
+        activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.transparent));
     }
 
-    public static void showSystemUI(Activity activity) {
-        View decorView = activity.getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-    }
 
     public static void enableLightStatusBar(Activity activity) {
 
@@ -149,12 +135,6 @@ public class CommonUtils {
         return updatedBitmap;
     }
 
-    public static void test(Window window) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-    }
-
     public static void startActivity(Activity activity, Class<?> className, HashMap<String, String> data) {
         Intent intent = new Intent(activity, className);
         intent.putExtra(UC.CLASS_NAME, className.toString());
@@ -162,6 +142,7 @@ public class CommonUtils {
             data.forEach(intent::putExtra);
         }
         activity.startActivity(intent);
+        activity.finish();
     }
 
 
@@ -188,18 +169,20 @@ public class CommonUtils {
         return shimmerDrawable;
     }
 
-    public static HashMap<String,String> buildData(String target, String value) {
-        HashMap<String,String> data = new HashMap<>();
-        final String mainActivityClass = MainActivity.class.toString().replaceAll("class ", "");
-       final String novelActivityClass = NovelActivity.class.toString().replaceAll("class ", "");
-       final String readActivityClass = ReadActivity.class.toString().replaceAll("class ", "");
-       final String searchActivityClass = SearchActivity.class.toString().replaceAll("class ", "");
+    public static HashMap<String, String> buildData(String target, String value) {
+        HashMap<String, String> data = new HashMap<>();
+        //   final String mainActivityClass = MainActivity.class.toString().replaceAll("class ", "");
+        final String novelActivityClass = NovelActivity.class.toString().replaceAll("class ", "");
+        //   final String readActivityClass = ReadActivity.class.toString().replaceAll("class ", "");
+        //  final String searchActivityClass = SearchActivity.class.toString().replaceAll("class ", "");
 
-        if(target.equals(novelActivityClass)) {
-            data.put(UC.NOVEL_ID,value);
+        if (target.equals(novelActivityClass)) {
+            data.put(UC.NOVEL_ID, value);
         }
         return data;
     }
+
+
 }
 
 

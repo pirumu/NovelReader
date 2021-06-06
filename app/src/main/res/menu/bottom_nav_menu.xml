@@ -7,23 +7,24 @@
         android:title="@string/home_txt"
         app:cnb_iconColor="@color/home" />
     <item
-        android:id="@+id/filter_bottom_menu"
+        android:id="@+id/book_store_bottom_menu"
         android:icon="@drawable/bookmark"
         android:title="@string/bookmark_txt"
         app:cnb_iconColor="@color/menu" />
-    <item
-        android:id="@+id/history_bottom_menu"
-        android:icon="@drawable/history"
-        android:title="@string/history_txt"
-        app:cnb_iconColor="@color/history" />
-    <item
-        android:id="@+id/favorite_bottom_menu"
-        android:icon="@drawable/fav"
-        android:title="@string/favorite_txt"
-        app:cnb_iconColor="@color/primary_color" />
     <item
         android:id="@+id/me_bottom_menu"
         android:icon="@drawable/me"
         android:title="@string/me_txt"
         app:cnb_iconColor="@color/purple_500" />
 </menu>
+
+    <!--<item-->
+    <!--android:id="@+id/history_bottom_menu"-->
+    <!--android:icon="@drawable/history"-->
+    <!--android:title="@string/history_txt"-->
+    <!--app:cnb_iconColor="@color/history" />-->
+    <!--<item-->
+    <!--android:id="@+id/favorite_bottom_menu"-->
+    <!--android:icon="@drawable/fav"-->
+    <!--android:title="@string/favorite_txt"-->
+    <!--app:cnb_iconColor="@color/primary_color" />-->

@@ -181,7 +181,7 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
 
     public void setBackgroundDefault(String url) {
 
-        GlideApp.with(this).asBitmap()
+        GlideApp.with(requireContext()).asBitmap()
                 .load(url)
                 .placeholder(CommonUtils.shimmerEffect())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -216,6 +216,7 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
             timer.cancel();
             timer = null;
         }
+
     }
 
     private void loadNestedScrollView() {
@@ -242,6 +243,7 @@ public class HomeFragment extends Fragment implements HomeController.EpoxyAdapte
         super.onAttach(context);
         if (context instanceof CallbackMainActivity) {
             mCallback = (CallbackMainActivity) context;
+            mCallback.showTabHome();
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement CallbackMainActivity");

@@ -36,7 +36,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
 
 public class SearchActivity extends AppCompatActivity implements SearchController.EpoxyAdapterCallbacks {
     private SearchView searchView;
@@ -44,7 +46,7 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
     private SearchViewModel mViewModel;
     private List<NovelModel> listData;
     private SearchController searchController;
-
+    private Disposable searchDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
     }
 
     private void styleSuggestion(SearchView sv) {
-        AutoCompleteTextView autoComplete = (AutoCompleteTextView) findViewById(R.id.auto_complete);
+        AutoCompleteTextView autoComplete = findViewById(R.id.auto_complete);
         autoComplete.setTextSize(14);
         autoComplete.setElevation(0);
         autoComplete.setBackgroundColor(Color.TRANSPARENT);
@@ -86,12 +88,12 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
                 R.layout.suggest_item, null,
                 from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
-        searchView = (SearchView) findViewById(R.id.search_box);
+        searchView = findViewById(R.id.search_box);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setSuggestionsAdapter(simpleCursorAdapter);
         styleSuggestion(searchView);
         searchView.setQueryHint(getString(R.string.search_now_txt));
-        RxSearchObservable.fromView(searchView)
+        searchDisposable = RxSearchObservable.fromView(searchView)
                 .debounce(500, TimeUnit.MILLISECONDS)
                 .filter(text -> !text.isEmpty())
                 .subscribeOn(Schedulers.io())
@@ -165,6 +167,7 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
 
         TextView backButton = findViewById(R.id.back_btn);
         backButton.setOnClickListener(r -> {
+            searchDisposable.dispose();
             super.onBackPressed();
         });
 
@@ -175,7 +178,7 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
 
         super.onNewIntent(intent);
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+//            String query = intent.getStringExtra(SearchManager.QUERY);
             if (searchView != null) {
                 searchView.clearFocus();
             }
@@ -197,5 +200,11 @@ public class SearchActivity extends AppCompatActivity implements SearchControlle
         HashMap<String, String> data = new HashMap<>();
         data.put(UC.NOVEL_ID, String.valueOf(model.getNovelId()));
         CommonUtils.startActivity(this, NovelActivity.class, data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        searchDisposable.dispose();
+        super.onDestroy();
     }
 }
